@@ -10,7 +10,7 @@ export const Footer = () => {
                     </div>
                     <div className='p-6 gap-8 flex flex-col'>
                         <div>
-                            <p className='font-bold text-base'>Impact Measurement and Management (TBN INDONESIA X MAXY ACADEMY)</p>
+                            <p className='font-bold text-base'>Impact Measurement and Management(TBN INDONESIA X MAXY ACADEMY)</p>
                         </div>
 
                         <div className='flex items-center gap-2'>

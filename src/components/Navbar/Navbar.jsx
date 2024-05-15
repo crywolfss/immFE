@@ -4,6 +4,7 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { Dialog } from '@headlessui/react'
+import { Link } from 'react-router-dom'
 
 
 export const Navbar = () => {
@@ -30,34 +31,31 @@ export const Navbar = () => {
                     </button>
                 </div>
                 <div className='hidden lg:flex lg:gap-x-12'>
-                    <a href="#" className="text-sm font-medium leading-6 text-gray-900 active active:bg-imm-main active:text-white">
+                    <Link to="/" className="text-sm font-medium leading-6 text-gray-900 active active:bg-imm-main active:text-white">
                         Homepage
-                    </a>
-                    <a href="#" className="text-sm font-medium leading-6 text-gray-900">
+                    </Link>
+                    <a href="/bootcamp" className="text-sm font-medium leading-6 text-gray-900">
                         Bootcamp
                     </a>
-                    <a href="#" className="text-sm font-medium leading-6 text-gray-900">
+                    <Link to="/imm-welcome" className="text-sm font-medium leading-6 text-gray-900">
                         IMM
-                    </a>
-                    <a href="#" className="text-sm font-medium leading-6 text-gray-900">
-                        Location
-                    </a>
-                    <a href="#" className="text-sm font-medium leading-6 text-gray-900">
+                    </Link>
+                    <a href="/community" className="text-sm font-medium leading-6 text-gray-900">
                         Community
                     </a>
-                    <a href="#" className="text-sm font-medium leading-6 text-gray-900">
+                    <a href="/profile" className="text-sm font-medium leading-6 text-gray-900">
                         Profile
                     </a>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4">
                     <div className='border-2 rounded-md border-imm-main'>
-                        <a href="#login" className="p-4 text-sm font-normal leading-8 text-imm-main" onClick={() => window.location.href = "/login"}>
+                        <a href="/login" className="p-4 text-sm font-normal leading-8 text-imm-main">
                             Login
                         </a>
                     </div>
 
                     <div className='border-2 rounded-md border-imm-main bg-imm-main shadow-lg'>
-                        <a href="#" className="p-4 text-sm font-normal leading-8 text-white" onClick={() => window.location.href = "/register"}>
+                        <a href="/register" className="p-4 text-sm font-normal leading-8 text-white">
                             Register
                         </a>
                     </div>
@@ -83,7 +81,6 @@ export const Navbar = () => {
                             <XMarkIcon className='h-6 w-6' aria-hidden="true" />
                         </button>
                     </div>
-
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">

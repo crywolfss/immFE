@@ -7,7 +7,7 @@ import { Card, ListItem } from 'flowbite-react'
 import React from 'react'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-//uytht
+
 
 
 export const Home = () => {
@@ -56,21 +56,21 @@ export const Home = () => {
         <div className='grid grid-cols-3 gap-4 pt-8'>
           <Card>
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Assigment
+              Progress Peserta
             </h5>
             <Gauge width={100} height={100} value={75} innerRadius="82%" outerRadius="100%" />
           </Card>
 
           <Card>
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Absensi
+              Progress IMM
             </h5>
             <Gauge width={100} height={100} value={75} innerRadius="82%" outerRadius="100%" />
           </Card>
 
           <Card>
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Progress
+              Jumlah Peserta
             </h5>
             <Gauge width={100} height={100} value={75} innerRadius="82%" outerRadius="100%" />
           </Card>
