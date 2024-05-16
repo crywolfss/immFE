@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from '../Navbar/Navbar.jsx';
 import { Footer } from '../Footer/Footer.jsx';
+import ImmNavbar from '../Navbar/ImmNavbar.jsx';
 
 const Layout = () => {
     const location = useLocation();
@@ -14,12 +15,21 @@ const Layout = () => {
         '/imm-verification-success',
         '/imm-registration-form',
     ];
+    const noNavbarRoutes = [
+        '/imm-home',
+        '/imm-myproject',
+        '/imm-profile',
+        '/imm-status',
+    ];
 
     const shouldRenderFooter = !noFooterRoutes.includes(location.pathname);
+    const shouldRenderNavbar = !noNavbarRoutes.includes(location.pathname);
+    const shouldRenderImmNavbar = noNavbarRoutes.includes(location.pathname);
 
     return (
         <div>
-            <Navbar />
+            {shouldRenderNavbar && <Navbar />}
+            {shouldRenderImmNavbar && <ImmNavbar />}
             <main>
                 <Outlet />
             </main>

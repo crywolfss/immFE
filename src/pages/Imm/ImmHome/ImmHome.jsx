@@ -47,9 +47,11 @@ export const ImmHome = () => {
                             className="absolute top-5 right-5 h-40 w-40 shadow-lg rounded-3xl"
                             alt=""
                         />
+                        <div class="absolute top-5 right-5 h-40 w-40 flex flex-col items-center justify-end pb-2">
+                        <span class="text-white text-lg font-bold">Bisnis Hijau</span>
+                        </div>
                     </div>
                 </div>
-
 
                 <div className="flex w-full flex-row mt-10 gap-28">
                     <div className='border-2 rounded-xl max-w-3xl'>
@@ -107,7 +109,7 @@ export const ImmHome = () => {
                 <div className='grid grid-cols-4 gap-4 p-4'>
                     <div className="relative w-full h-64 overflow-hidden rounded-lg shadow-lg">
                         <img
-                            src="https://via.placeholder.com/600x400"
+                            src="src/assets/images/imm-templates.png"
                             alt="Background"
                             className="absolute inset-0 w-full h-full object-cover"
                         />
@@ -120,7 +122,7 @@ export const ImmHome = () => {
                     </div>
                     <div className="relative w-full h-64 overflow-hidden rounded-lg shadow-lg">
                         <img
-                            src="https://via.placeholder.com/600x400"
+                            src="src/assets/images/imm-templates.png"
                             alt="Background"
                             className="absolute inset-0 w-full h-full object-cover"
                         />
@@ -128,12 +130,12 @@ export const ImmHome = () => {
                             <button className="text-white text-lg bg-imm-secondary px-3 py-2 rounded-xl">Use Template</button>
                         </div>
                         <div className="absolute bottom-0 left-0 p-4">
-                            <h3 className="text-black text-lg font-normal">Impact Mapping</h3>
+                            <h3 className="text-black text-lg font-normal">Impact Survey</h3>
                         </div>
                     </div>
                     <div className="relative w-full h-64 overflow-hidden rounded-lg shadow-lg">
                         <img
-                            src="https://via.placeholder.com/600x400"
+                            src="src/assets/images/imm-templates.png"
                             alt="Background"
                             className="absolute inset-0 w-full h-full object-cover"
                         />
@@ -141,12 +143,12 @@ export const ImmHome = () => {
                             <button className="text-white text-lg bg-imm-secondary px-3 py-2 rounded-xl">Use Template</button>
                         </div>
                         <div className="absolute bottom-0 left-0 p-4">
-                            <h3 className="text-black text-lg font-normal">Impact Mapping</h3>
+                            <h3 className="text-black text-lg font-normal">Action Plan</h3>
                         </div>
                     </div>
                     <div className="relative w-full h-64 overflow-hidden rounded-lg shadow-lg">
                         <img
-                            src="https://via.placeholder.com/600x400"
+                            src="src/assets/images/imm-templates.png"
                             alt="Background"
                             className="absolute inset-0 w-full h-full object-cover"
                         />
@@ -154,7 +156,7 @@ export const ImmHome = () => {
                             <button className="text-white text-lg bg-imm-secondary px-3 py-2 rounded-xl">Use Template</button>
                         </div>
                         <div className="absolute bottom-0 left-0 p-4">
-                            <h3 className="text-black text-lg font-normal">Impact Mapping</h3>
+                            <h3 className="text-black text-lg font-normal">Evaluation Plan</h3>
                         </div>
                     </div>
                 </div>
@@ -167,7 +169,7 @@ export const ImmHome = () => {
                     <div className="w-full max-w-sm mx-auto">
                         <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
                             <img
-                                src="https://via.placeholder.com/600x400"
+                                src="src/assets/images/imm-recent-project.png"
                                 alt="Background"
                                 className="absolute inset-0 w-full h-full object-cover"
                             />
@@ -180,7 +182,77 @@ export const ImmHome = () => {
                     <div className="w-full max-w-sm mx-auto">
                         <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
                             <img
-                                src="https://via.placeholder.com/600x400"
+                                src="src/assets/images/imm-recent-project.png"
+                                alt="Background"
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                          
+                        </div>
+                        <div className="mt-4 px-2 text-start">
+                            <h3 className="text-xl font-bold">Wanita Berdaya</h3>
+                            <p className="text-gray-600">25/04/2024</p>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto">
+                        <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
+                            <img
+                                src="src/assets/images/imm-recent-project.png"
+                                alt="Background"
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                          
+                        </div>
+                        <div className="mt-4 px-2 text-start">
+                            <h3 className="text-xl font-bold">Bisnis Berdampak</h3>
+                            <p className="text-gray-600">25/04/2024</p>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto">
+                        <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
+                            <img
+                                src="src/assets/images/imm-recent-project.png"
+                                alt="Background"
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                          
+                        </div>
+                        <div className="mt-4 px-2 text-start">
+                            <h3 className="text-xl font-bold">Sociopreneur 4.0</h3>
+                            <p className="text-gray-600">25/04/2024</p>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto">
+                        <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
+                            <img
+                                src="src/assets/images/imm-recent-project.png"
+                                alt="Background"
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                          
+                        </div>
+                        <div className="mt-4 px-2 text-start">
+                            <h3 className="text-xl font-bold">Bisnis Bersama</h3>
+                            <p className="text-gray-600">25/04/2024</p>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto">
+                        <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
+                            <img
+                                src="src/assets/images/imm-recent-project.png"
+                                alt="Background"
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                          
+                        </div>
+                        <div className="mt-4 px-2 text-start">
+                            <h3 className="text-xl font-bold">Inklusi Finansial</h3>
+                            <p className="text-gray-600">25/04/2024</p>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto">
+                        <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
+                            <img
+                                src="src/assets/images/imm-recent-project.png"
                                 alt="Background"
                                 className="absolute inset-0 w-full h-full object-cover"
                             />
@@ -194,77 +266,7 @@ export const ImmHome = () => {
                     <div className="w-full max-w-sm mx-auto">
                         <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
                             <img
-                                src="https://via.placeholder.com/600x400"
-                                alt="Background"
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                          
-                        </div>
-                        <div className="mt-4 px-2 text-start">
-                            <h3 className="text-xl font-bold">Wirausaha Muda</h3>
-                            <p className="text-gray-600">25/04/2024</p>
-                        </div>
-                    </div>
-                    <div className="w-full max-w-sm mx-auto">
-                        <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
-                            <img
-                                src="https://via.placeholder.com/600x400"
-                                alt="Background"
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                          
-                        </div>
-                        <div className="mt-4 px-2 text-start">
-                            <h3 className="text-xl font-bold">Wirausaha Muda</h3>
-                            <p className="text-gray-600">25/04/2024</p>
-                        </div>
-                    </div>
-                    <div className="w-full max-w-sm mx-auto">
-                        <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
-                            <img
-                                src="https://via.placeholder.com/600x400"
-                                alt="Background"
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                          
-                        </div>
-                        <div className="mt-4 px-2 text-start">
-                            <h3 className="text-xl font-bold">Wirausaha Muda</h3>
-                            <p className="text-gray-600">25/04/2024</p>
-                        </div>
-                    </div>
-                    <div className="w-full max-w-sm mx-auto">
-                        <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
-                            <img
-                                src="https://via.placeholder.com/600x400"
-                                alt="Background"
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                          
-                        </div>
-                        <div className="mt-4 px-2 text-start">
-                            <h3 className="text-xl font-bold">Wirausaha Muda</h3>
-                            <p className="text-gray-600">25/04/2024</p>
-                        </div>
-                    </div>
-                    <div className="w-full max-w-sm mx-auto">
-                        <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
-                            <img
-                                src="https://via.placeholder.com/600x400"
-                                alt="Background"
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                          
-                        </div>
-                        <div className="mt-4 px-2 text-start">
-                            <h3 className="text-xl font-bold">Wirausaha Muda</h3>
-                            <p className="text-gray-600">25/04/2024</p>
-                        </div>
-                    </div>
-                    <div className="w-full max-w-sm mx-auto">
-                        <div className="relative h-64 overflow-hidden rounded-lg shadow-lg">
-                            <img
-                                src="https://via.placeholder.com/600x400"
+                                src="src/assets/images/imm-recent-project.png"
                                 alt="Background"
                                 className="absolute inset-0 w-full h-full object-cover"
                             />
@@ -276,7 +278,8 @@ export const ImmHome = () => {
                         </div>
                     </div>
                 </div>
+                <div style={{ height: '50px' }}></div>
             </div>
         </div>
-    )
-}
+   );
+};

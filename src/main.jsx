@@ -12,6 +12,9 @@ import { Otp } from './pages/Imm/Otp/Otp.jsx';
 import { Verification } from './pages/Imm/Verification/Verification.jsx';
 import { RegisForm } from './pages/Imm/RegisForm/RegisForm.jsx';
 import { ImmHome } from './pages/Imm/ImmHome/ImmHome.jsx';
+import { ImmProfile } from './pages/Imm/ImmProfile/immprofile.jsx';
+import { ImmStatus } from './pages/Imm/Status/status.jsx';
+import { MyProject } from './pages/Imm/MyProject/MyProject.jsx';
 import { Home } from './pages/Home/Home';
 import Community from './pages/Community/Community';
 import Profile from './pages/Profile/Profile';
@@ -32,6 +35,9 @@ const router = createBrowserRouter([
       { path: 'imm-verification-success', element: <VerificationSuccess /> },
       { path: 'imm-registration-form', element: <RegisForm /> },
       { path: 'imm-home', element: <ImmHome /> },
+      { path: 'imm-profile', element: <ImmProfile /> },
+      { path: 'imm-status', element: <ImmStatus /> },
+      { path: 'imm-myproject', element: <MyProject />},
       { path: 'home', element: <Home /> },
       { path: 'community', element: <Community /> },
       { path: 'bootcamp', element: <Bootcamp /> },

@@ -1,15 +1,18 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
     Bars3Icon,
     XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { Dialog } from '@headlessui/react'
-import { Link } from 'react-router-dom'
-
+} from '@heroicons/react/24/outline';
+import { Dialog } from '@headlessui/react';
 
 export const Navbar = () => {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [activeButton, setActiveButton] = useState('');
 
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const handleSetActiveButton = (buttonName) => {
+        setActiveButton(buttonName);
+    };
 
     return (
         <header className='bg-white border-b shadow-md border-imm-main'>
@@ -18,7 +21,6 @@ export const Navbar = () => {
                     <a href="#" className='-m-1.5 p-1.5'>
                         <span className='sr-only'>IMM</span>
                         <span className='font-bold text-2xl'>IMM</span>
-                        {/* <img className="h-6 w-auto" src="src/assets/imm-logo.png" alt="imm-logo" /> */}
                     </a>
                 </div>
                 <div className="flex lg:hidden">
@@ -31,21 +33,42 @@ export const Navbar = () => {
                     </button>
                 </div>
                 <div className='hidden lg:flex lg:gap-x-12'>
-                    <Link to="/" className="text-sm font-medium leading-6 text-gray-900 active active:bg-imm-main active:text-white">
+                    <NavLink
+                        to="/"
+                        exact
+                        className={`text-sm font-medium leading-6 ${activeButton === 'home' ? 'bg-imm-main text-white rounded-md px-4 py-2' : 'text-gray-900'} inline-flex items-center h-10`}
+                        onClick={() => handleSetActiveButton('home')}
+                    >
                         Homepage
-                    </Link>
-                    <a href="/bootcamp" className="text-sm font-medium leading-6 text-gray-900">
+                    </NavLink>
+                    <NavLink
+                        to="/bootcamp"
+                        className={`text-sm font-medium leading-6 ${activeButton === 'bootcamp' ? 'bg-imm-main text-white rounded-md px-4 py-2' : 'text-gray-900'} inline-flex items-center h-10`}
+                        onClick={() => handleSetActiveButton('bootcamp')}
+                    >
                         Bootcamp
-                    </a>
-                    <Link to="/imm-welcome" className="text-sm font-medium leading-6 text-gray-900">
+                    </NavLink>
+                    <NavLink
+                        to="/imm-welcome"
+                        className={`text-sm font-medium leading-6 ${activeButton === 'imm' ? 'bg-imm-main text-white rounded-md px-4 py-2' : 'text-gray-900'} inline-flex items-center h-10`}
+                        onClick={() => handleSetActiveButton('imm')}
+                    >
                         IMM
-                    </Link>
-                    <a href="/community" className="text-sm font-medium leading-6 text-gray-900">
+                    </NavLink>
+                    <NavLink
+                        to="/community"
+                        className={`text-sm font-medium leading-6 ${activeButton === 'community' ? 'bg-imm-main text-white rounded-md px-4 py-2' : 'text-gray-900'} inline-flex items-center h-10`}
+                        onClick={() => handleSetActiveButton('community')}
+                    >
                         Community
-                    </a>
-                    <a href="/profile" className="text-sm font-medium leading-6 text-gray-900">
+                    </NavLink>
+                    <NavLink
+                        to="/profile"
+                        className={`text-sm font-medium leading-6 ${activeButton === 'profile' ? 'bg-imm-main text-white rounded-md px-4 py-2' : 'text-gray-900'} inline-flex items-center h-10`}
+                        onClick={() => handleSetActiveButton('profile')}
+                    >
                         Profile
-                    </a>
+                    </NavLink>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4">
                     <div className='border-2 rounded-md border-imm-main'>
@@ -55,7 +78,7 @@ export const Navbar = () => {
                     </div>
 
                     <div className='border-2 rounded-md border-imm-main bg-imm-main shadow-lg'>
-                        <a href="/register" className="p-4 text-sm font-normal leading-8 text-white">
+                        <a href="/register" onClick={() => handleSetActiveButton('register')} className="p-4 text-sm font-normal leading-8 text-white">
                             Register
                         </a>
                     </div>
@@ -84,49 +107,47 @@ export const Navbar = () => {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                                <NavLink
+                                    to="/"
+                                    exact
+                                    className="-mx-3 block rounded-md px-4 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleSetActiveButton('home')}
                                 >
                                     Homepage
-                                </a>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                                </NavLink>
+                                <NavLink
+                                    to="/bootcamp"
+                                    className="-mx-3 block rounded-md px-4 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleSetActiveButton('bootcamp')}
                                 >
                                     Bootcamp
-                                </a>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                                </NavLink>
+                                <NavLink
+                                    to="/imm-welcome"
+                                    className="-mx-3 block rounded-md px-4 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleSetActiveButton('imm')}
                                 >
                                     IMM
-                                </a>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                                </NavLink>
+                                <NavLink
+                                    to="/community"
+                                    className="-mx-3 block rounded-md px-4 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleSetActiveButton('community')}
                                 >
                                     Community
-                                </a>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                                </NavLink>
+                                <NavLink
+                                    to="/profile"
+                                    className="-mx-3 block rounded-md px-4 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleSetActiveButton('profile')}
                                 >
                                     Profile
-                                </a>
+                                </NavLink>
                             </div>
-                            {/* <div className="py-6">
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                >
-                                    Log in
-                                </a>
-                            </div> */}
                         </div>
                     </div>
                 </Dialog.Panel>
             </Dialog>
         </header >
-    )
-}
+    );
+};

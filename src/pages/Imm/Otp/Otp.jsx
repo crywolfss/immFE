@@ -39,7 +39,7 @@ export const Otp = () => {
 
 
                                 <div class="flex flex-col items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
-                                    <p>Belum menerima kode? tunggu 01:00</p> <Link to="/imm-registration-form" class="flex flex-row items-center text-blue-600" href="http://" target="_blank" rel="noopener noreferrer">Kirim ulang kode</Link>
+                                    <p>Belum menerima kode? tunggu 01:00</p> <Link to="/imm-verification-success" class="flex flex-row items-center text-[#0F1F3E]" href="http://" target="_blank" rel="noopener noreferrer">Kirim ulang kode</Link>
                                 </div>
 
                             </div>

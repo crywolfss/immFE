@@ -1,5 +1,6 @@
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 export const VerificationSuccess = () => {
     return (
@@ -19,8 +20,10 @@ export const VerificationSuccess = () => {
                 Anda akan dialihkan ke halaman selanjutnya
             </p>
 
-            <a href='#' className="mt-4 text-center text-sm font-normal leading-9 tracking-tight text-gray-900 hover:text-gray-400">
+            <a href='#' className="mt-4 text-center text-sm font-semibold leading-9 tracking-tight text-[#0F1F3E] hover:text-[#7198F9]">
+            <Link to = '/imm-registration-form'>
                 Klik disini jika bermasalah
+                </Link>    
             </a>
         </div>
     );
