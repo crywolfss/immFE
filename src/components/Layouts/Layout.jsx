@@ -18,8 +18,10 @@ const Layout = () => {
     const noNavbarRoutes = [
         '/imm-home',
         '/imm-myproject',
+        '/imm-create',
         '/imm-profile',
         '/imm-status',
+        '/forum',
     ];
 
     const shouldRenderFooter = !noFooterRoutes.includes(location.pathname);

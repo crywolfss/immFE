@@ -15,6 +15,8 @@ import { ImmHome } from './pages/Imm/ImmHome/ImmHome.jsx';
 import { ImmProfile } from './pages/Imm/ImmProfile/immprofile.jsx';
 import { ImmStatus } from './pages/Imm/Status/status.jsx';
 import { MyProject } from './pages/Imm/MyProject/MyProject.jsx';
+import { ImmCreate } from './pages/Imm/Create/ImmCreate.jsx';
+import Forum from './pages/Imm/Forum/forum.jsx';
 import { Home } from './pages/Home/Home';
 import Community from './pages/Community/Community';
 import Profile from './pages/Profile/Profile';
@@ -38,6 +40,8 @@ const router = createBrowserRouter([
       { path: 'imm-profile', element: <ImmProfile /> },
       { path: 'imm-status', element: <ImmStatus /> },
       { path: 'imm-myproject', element: <MyProject />},
+      { path: 'imm-create', element: <ImmCreate />},
+      { path: 'forum', element: <Forum />},
       { path: 'home', element: <Home /> },
       { path: 'community', element: <Community /> },
       { path: 'bootcamp', element: <Bootcamp /> },
