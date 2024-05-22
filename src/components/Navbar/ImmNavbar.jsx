@@ -35,7 +35,7 @@ const ImmNavbar = () => {
                             MyProject
                         </NavLink>
                         <NavLink
-                            to="/create"
+                            to="/imm-create"
                             className={`text-sm font-medium leading-6 ${activeButton === 'create' ? 'bg-imm-main text-white rounded-md px-4 py-2' : 'text-gray-900'} inline-flex items-center h-10`}
                             onClick={() => handleSetActiveButton('create')}
                         >
@@ -120,7 +120,7 @@ const ImmNavbar = () => {
                                     MyProject
                                 </NavLink>
                                 <NavLink
-                                    to="/create"
+                                    to="/imm-create"
                                     className="-mx-3 block rounded-md px-4 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
                                     onClick={() => handleSetActiveButton('create')}
                                 >

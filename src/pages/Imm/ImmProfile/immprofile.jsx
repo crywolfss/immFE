@@ -61,8 +61,8 @@ export const ImmProfile = () => {
                         <img src="src/assets/icons/icon-exit.svg" alt="Exit" className="h-6 w-6 ml-4" />
                     </div>
                 </div>
-                <div style={{ height: '50px' }}></div>
             </div>
+            <div style={{ height: '100px' }}></div>
         </div>
     );
 };
