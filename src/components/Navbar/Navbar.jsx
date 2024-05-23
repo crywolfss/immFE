@@ -71,6 +71,7 @@ export const Navbar = () => {
                     </NavLink>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4">
+                <img src="src/assets/icons/icon-notification.svg" alt="notification" className="h-10 w-10 mr-4" />
                     <div className='border-2 rounded-md border-imm-main'>
                         <a href="/login" className="p-4 text-sm font-normal leading-8 text-imm-main">
                             Login
