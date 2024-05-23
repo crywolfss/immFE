@@ -63,51 +63,59 @@ const Bootcamp = () => {
                         <img src="src/assets/Bootcamp/influence-marketing.svg" alt="Influence Marketing" className="w-full h-40 object-cover rounded-t-lg" />
                         <h3 className="text-lg font-bold mt-4">Influence Marketing</h3>
                         <p className="text-gray-700">How to create successful influencer marketing campaigns</p>
-                        <div className="mt-2">
-                            <span className="text-imm-main font-bold">Rp 150.000</span>
-                            <div className="flex items-center justify-center mt-1">
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <div className="mt-2 text-left">
+                            <span className="text-imm-main font-bold block">Rp 450.000</span>
+                            <div className="flex items-center mt-1">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
                                 <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
-                                </svg>
+                                <span className="text-gray-700 ml-2">(112)</span>
                             </div>
                         </div>
                         <button className="bg-imm-main text-white py-2 px-4 mt-4 w-full rounded">Beli Sekarang</button>
                     </div>
                     
-                    <div className="bg-white shadow-lg rounded-lg p-4 text-center">
+                    <div className="bg-white shadow-lg rounded-lg p-4">
                         <img src="src/assets/Bootcamp/Desirability.svg" alt="Influence Marketing" className="w-full h-40 object-cover rounded-t-lg" />
-                        <h3 className="text-lg font-bold mt-4">Desirability</h3>
-                        <p className="text-gray-700">How to create successful influencer marketing campaigns</p>
-                        <div className="mt-2">
-                            <span className="text-imm-main font-bold">Rp 150.000</span>
-                            <div className="flex items-center justify-center mt-1">
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <h3 className="text-lg font-bold mt-4 text-center">Desirability</h3>
+                        <p className="text-gray-700 text-center">How To Create Successful Influencer Marketing Campaigns</p>
+                        <div className="mt-2 text-left">
+                            <span className="text-imm-main font-bold block">Rp 450.000</span>
+                            <div className="flex items-center mt-1">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
                                 <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
-                                </svg>
+                                <span className="text-gray-700 ml-2">(22)</span>
                             </div>
                         </div>
                         <button className="bg-imm-main text-white py-2 px-4 mt-4 w-full rounded">Beli Sekarang</button>
@@ -117,24 +125,28 @@ const Bootcamp = () => {
                         <img src="src/assets/Bootcamp/Pitching.svg" alt="Influence Marketing" className="w-full h-40 object-cover rounded-t-lg" />
                         <h3 className="text-lg font-bold mt-4">Pitching</h3>
                         <p className="text-gray-700">How to create successful influencer marketing campaigns</p>
-                        <div className="mt-2">
-                            <span className="text-imm-main font-bold">Rp 150.000</span>
-                            <div className="flex items-center justify-center mt-1">
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <div className="mt-2 text-left">
+                            <span className="text-imm-main font-bold block">Rp 450.000</span>
+                            <div className="flex items-center mt-1">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
                                 <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
-                                </svg>
+                                <span className="text-gray-700 ml-2">(212)</span>
                             </div>
                         </div>
                         <button className="bg-imm-main text-white py-2 px-4 mt-4 w-full rounded">Beli Sekarang</button>
@@ -144,24 +156,28 @@ const Bootcamp = () => {
                         <img src="src/assets/Bootcamp/Metrics-Ecosystem.svg" alt="Influence Marketing" className="w-full h-40 object-cover rounded-t-lg" />
                         <h3 className="text-lg font-bold mt-4">Metrics Ecosystem</h3>
                         <p className="text-gray-700">How to create successful influencer marketing campaigns</p>
-                        <div className="mt-2">
-                            <span className="text-imm-main font-bold">Rp 150.000</span>
-                            <div className="flex items-center justify-center mt-1">
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <div className="mt-2 text-left">
+                            <span className="text-imm-main font-bold block">Rp 450.000</span>
+                            <div className="flex items-center mt-1">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
                                 <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
-                                </svg>
+                                <span className="text-gray-700 ml-2">(132)</span>
                             </div>
                         </div>
                         <button className="bg-imm-main text-white py-2 px-4 mt-4 w-full rounded">Beli Sekarang</button>
@@ -171,24 +187,28 @@ const Bootcamp = () => {
                         <img src="src/assets/Bootcamp/ViabilityStudies.svg" alt="Influence Marketing" className="w-full h-40 object-cover rounded-t-lg" />
                         <h3 className="text-lg font-bold mt-4">Viability Studies</h3>
                         <p className="text-gray-700">How to create successful influencer marketing campaigns</p>
-                        <div className="mt-2">
-                            <span className="text-imm-main font-bold">Rp 150.000</span>
-                            <div className="flex items-center justify-center mt-1">
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <div className="mt-2 text-left">
+                            <span className="text-imm-main font-bold block">Rp 450.000</span>
+                            <div className="flex items-center mt-1">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
                                 <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
-                                </svg>
+                                <span className="text-gray-700 ml-2">(12)</span>
                             </div>
                         </div>
                         <button className="bg-imm-main text-white py-2 px-4 mt-4 w-full rounded">Beli Sekarang</button>
@@ -198,24 +218,28 @@ const Bootcamp = () => {
                         <img src="src/assets/Bootcamp/BusinessModel.svg" alt="Influence Marketing" className="w-full h-40 object-cover rounded-t-lg" />
                         <h3 className="text-lg font-bold mt-4">Business Model</h3>
                         <p className="text-gray-700">How to create successful influencer marketing campaigns</p>
-                        <div className="mt-2">
-                            <span className="text-imm-main font-bold">Rp 150.000</span>
-                            <div className="flex items-center justify-center mt-1">
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <div className="mt-2 text-left">
+                            <span className="text-imm-main font-bold block">Rp 450.000</span>
+                            <div className="flex items-center mt-1">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
                                 <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
-                                </svg>
+                                <span className="text-gray-700 ml-2">(42)</span>
                             </div>
                         </div>
                         <button className="bg-imm-main text-white py-2 px-4 mt-4 w-full rounded">Beli Sekarang</button>
@@ -225,24 +249,28 @@ const Bootcamp = () => {
                         <img src="src/assets/Bootcamp/Feasibilitystudies.svg" alt="Influence Marketing" className="w-full h-40 object-cover rounded-t-lg" />
                         <h3 className="text-lg font-bold mt-4">Feasibility Studies</h3>
                         <p className="text-gray-700">How to create successful influencer marketing campaigns</p>
-                        <div className="mt-2">
-                            <span className="text-imm-main font-bold">Rp 150.000</span>
-                            <div className="flex items-center justify-center mt-1">
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <div className="mt-2 text-left">
+                            <span className="text-imm-main font-bold block">Rp 450.000</span>
+                            <div className="flex items-center mt-1">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
                                 <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
-                                </svg>
+                                <span className="text-gray-700 ml-2">(32)</span>
                             </div>
                         </div>
                         <button className="bg-imm-main text-white py-2 px-4 mt-4 w-full rounded">Beli Sekarang</button>
@@ -252,24 +280,28 @@ const Bootcamp = () => {
                         <img src="src/assets/Bootcamp/MarketFit.svg" alt="Influence Marketing" className="w-full h-40 object-cover rounded-t-lg" />
                         <h3 className="text-lg font-bold mt-4">Market Fit</h3>
                         <p className="text-gray-700">How to create successful influencer marketing campaigns</p>
-                        <div className="mt-2">
-                            <span className="text-imm-main font-bold">Rp 150.000</span>
-                            <div className="flex items-center justify-center mt-1">
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <div className="mt-2 text-left">
+                            <span className="text-imm-main font-bold block">Rp 450.000</span>
+                            <div className="flex items-center mt-1">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
+                                </svg>
+                                <svg className="h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
                                 <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
                                 </svg>
-                                <svg className="h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 1l2.93 6.41L19 7.5l-5.29 5.09L15.5 19 10 15.58 4.5 19l1.79-6.41L1 7.5l5.07-.09L10 1z" clip-rule="evenodd" />
-                                </svg>
+                                <span className="text-gray-700 ml-2">(22)</span>
                             </div>
                         </div>
                         <button className="bg-imm-main text-white py-2 px-4 mt-4 w-full rounded">Beli Sekarang</button>
@@ -323,15 +355,30 @@ const Bootcamp = () => {
         Laporan
     </h2>
     <p className="mb-4 ml-3">Susun template pembuatan laporan!</p>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    {['Laporan Dampak', 'Laporan Project IMM', 'Laporan Perhitungan', 'Laporan Grant'].map(report => (
-                        <div key={report} className="bg-white shadow-lg rounded-lg p-4">
-                            <img src={`src/assets/Reports/${report.toLowerCase().replace(/ /g, '-')}.jpg`} alt={report} className="w-full h-40 object-cover-rounded-lg" />
-<h3 className="text-lg font-bold mt-4">{report}</h3>
-<button className="bg-imm-main text-white py-2 px-4 mt-4 w-full rounded">Download</button>
-</div>
-))}
-</div>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                {['Laporan Dampak', 'Laporan Project IMM', 'Laporan Perhitungan', 'Laporan Grant'].map((report, index) => {
+                    const imageNames = [
+                    'laporan-dampak.svg',
+                    'laporan-project-imm.svg',
+                    'laporan-perhitungan.svg',
+                    'laporan-grant.svg'
+                    ];
+                    
+                    return (
+                    <div key={report} className="bg-white shadow-lg rounded-lg p-4">
+                        <img 
+                        src={`src/assets/Reports/${imageNames[index]}`} 
+                        alt={report} 
+                        className="w-full h-40 object-cover rounded-lg" 
+                        />
+                        <h3 className="text-lg font-bold mt-4">{report}</h3>
+                        <button className="bg-imm-main text-white py-2 px-4 mt-4 w-full rounded">
+                        Download
+                        </button>
+                    </div>
+                    );
+                })}
+                </div>
 </div>
 </div>
 );

@@ -18,7 +18,7 @@ const Community = () => {
                 <li className="mb-2">
                   <a href="#" className="flex items-center space-x-2">
                     <img
-                      src="https://via.placeholder.com/40"
+                      src="src/assets/community/group1.svg"
                       alt="Group"
                       className="w-10 h-10 rounded-full"
                     />
@@ -28,7 +28,7 @@ const Community = () => {
                 <li className="mb-2">
                   <a href="#" className="flex items-center space-x-2">
                     <img
-                      src="https://via.placeholder.com/40"
+                      src="src/assets/community/group2.svg"
                       alt="Group"
                       className="w-10 h-10 rounded-full"
                     />
@@ -38,7 +38,7 @@ const Community = () => {
                 <li className="mb-2">
                   <a href="#" className="flex items-center space-x-2">
                     <img
-                      src="https://via.placeholder.com/40"
+                      src="src/assets/community/group3.svg"
                       alt="Group"
                       className="w-10 h-10 rounded-full"
                     />
@@ -48,7 +48,7 @@ const Community = () => {
                 <li className="mb-2">
                   <a href="#" className="flex items-center space-x-2">
                     <img
-                      src="https://via.placeholder.com/40"
+                      src="src/assets/community/group4.svg"
                       alt="Group"
                       className="w-10 h-10 rounded-full"
                     />
