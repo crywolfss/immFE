@@ -23,6 +23,7 @@ import Profile from './pages/Profile/Profile';
 import Bootcamp from './pages/Bootcamp/Bootcamp';
 import Layout from './components/Layouts/Layout.jsx';
 import FormCreate from './pages/Imm/Create/FormCreate.jsx';
+import FormUpdate from './pages/Imm/Create/FormUpdate.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
       { path: 'imm-myproject', element: <MyProject />},
       { path: 'imm-create', element: <ImmCreate />},
       { path: 'form-create', element: <FormCreate />},
+      { path: 'form-update', element: <FormUpdate />},
       { path: 'forum', element: <Forum />},
       { path: 'home', element: <Home /> },
       { path: 'community', element: <Community /> },
