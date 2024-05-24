@@ -10,6 +10,7 @@ import { DateCalendar, LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { BarChart, Gauge, gaugeClasses } from '@mui/x-charts'
 import { ImmBarChart } from '../../../common/Chart/BarChart/ImmBarChart'
+import { DataCalendar } from '../../../common/DataCalendar/DataCalendar'
 
 export const MyProject = () => {
     return (
@@ -493,10 +494,8 @@ export const MyProject = () => {
                             <p className='text-center font-semibold text-gray-700'>Invest Department</p>
                         </div>
                     </div>
-                    <div className='col-span-2'>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DateCalendar />
-                        </LocalizationProvider>
+                    <div className='col-span-2 mt-7'>
+                        <DataCalendar/>
                     </div>
                 </div>
             </div>

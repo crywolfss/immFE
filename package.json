@@ -31,6 +31,7 @@
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.23.0",
     "recharts": "^2.12.7",
+    "rsuite": "^5.62.0",
     "sass": "^1.76.0",
     "sort-by": "^0.0.2"
   },

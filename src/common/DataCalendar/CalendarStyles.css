@@ -1,0 +1,58 @@
+/* Existing styles */
+.rs-calendar {
+  background-color: #DCE4F7; /* Change the background color */
+  border: 1px solid #ccc; /* Change the border color */
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.rs-calendar-table-cell {
+  border: 1px solid #BAB8B8;
+}
+
+/* Remove left border from the first cell in each row */
+.rs-calendar-table-row .rs-calendar-table-cell:first-child {
+  border-left: none;
+}
+
+/* Remove right border from the last cell in each row */
+.rs-calendar-table-row .rs-calendar-table-cell:last-child {
+  border-right: none;
+}
+
+/* Remove bottom border from the cells in the last row */
+.rs-calendar-table-row:last-of-type .rs-calendar-table-cell {
+  border-bottom: none;
+}
+
+.calendar-attendance-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar-attendance-list li {
+  margin-bottom: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-align: center;
+  width: fit-content;
+}
+
+.attendance-status.present {
+  background-color: #57D04B;
+  
+}
+
+.attendance-status.sick-leave {
+  background-color: #D17666;
+  
+}
+
+.attendance-status.holiday {
+  background-color: #D8A32B;
+  
+}

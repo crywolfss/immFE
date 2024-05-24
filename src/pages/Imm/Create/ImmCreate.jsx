@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const ImmCreate = () => {
     return (
@@ -34,18 +35,18 @@ export const ImmCreate = () => {
                     </div>
                 </div>
                 <div className="mt-6 flex">
-                    <div className="rounded-full bg-blue-600 flex-grow relative" style={{ width: '140px', height: '50px', marginRight: '20px' }}>
+                    <Link to="/form-create" className="rounded-full bg-blue-600 flex-grow relative" style={{ width: '140px', height: '50px', marginRight: '20px' }}>
                         <div className="text-white font-semibold flex items-center justify-center h-full">
                             <img src="src/assets/icons/icon-plus.svg" alt="icon" className="mr-2" style={{ width: '16px', height: '16px' }} />
                             <p>Buat Projek</p>
                         </div>
-                    </div>
-                    <div className="rounded-full bg-blue-600 flex-grow relative" style={{ width: '160px', height: '50px', marginLeft: '20px'}}>
+                    </Link>
+                    <Link to="/form-update" className="rounded-full bg-blue-600 flex-grow relative" style={{ width: '160px', height: '50px', marginLeft: '20px'}}>
                         <div className="text-white font-semibold flex items-center justify-center h-full">
                             <img src="src/assets/icons/icon-update.svg" alt="icon" className="mr-2" style={{ width: '16px', height: '16px' }} />
                             <p>Perbarui Laporan</p>
                         </div>
-                    </div>
+                    </Link>
                 </div>
                 <div style={{ height: '100px' }}></div>
             </div>
