@@ -19,6 +19,7 @@ import { ImmCreate } from './pages/Imm/Create/ImmCreate.jsx';
 import Forum from './pages/Imm/Forum/forum.jsx';
 import { Home } from './pages/Home/Home';
 import Community from './pages/Community/Community';
+import Blog from './pages/Blog/blog';
 import Profile from './pages/Profile/Profile';
 import Bootcamp from './pages/Bootcamp/Bootcamp';
 import Layout from './components/Layouts/Layout.jsx';
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
       { path: 'home', element: <Home /> },
       { path: 'community', element: <Community /> },
       { path: 'bootcamp', element: <Bootcamp /> },
+      { path: 'blog', element: <Blog /> },
       { path: 'profile', element: <Profile /> },
     ],
   },

@@ -59,8 +59,15 @@ export const Navbar = () => {
                         to="/community"
                         className={`text-sm font-medium leading-6 ${activeButton === 'community' ? 'bg-imm-main text-white rounded-md px-4 py-2' : 'text-gray-900'} inline-flex items-center h-10`}
                         onClick={() => handleSetActiveButton('community')}
-                    >
+                    >    
                         Community
+                    </NavLink>
+                    <NavLink
+                        to="/blog"
+                        className={`text-sm font-medium leading-6 ${activeButton === 'blog' ? 'bg-imm-main text-white rounded-md px-4 py-2' : 'text-gray-900'} inline-flex items-center h-10`}
+                        onClick={() => handleSetActiveButton('blog')}
+                    >    
+                        Blog
                     </NavLink>
                     <NavLink
                         to="/profile"

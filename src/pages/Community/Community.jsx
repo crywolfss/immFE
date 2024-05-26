@@ -42,12 +42,13 @@ const Community = () => {
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <div className="flex">
             {/* Sidebar Kiri */}
-            <div className="w-1/4 pl-4 bg-white p-4 shadow rounded-lg mb-4">
+            <div className="w-1/4 pl-4 bg-white p-2 shadow rounded-lg mb-4">
             <div className="search-bar mb-4">
                 <input
                   type="text"
                   placeholder="cari disini"
                   className="search-input w-full p-2 border rounded"
+                  style={{ width: '255px' }}
                 />
                 <button className="search-button">
                   <MagnifyingGlassIcon className="icon" />
