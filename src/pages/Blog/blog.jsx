@@ -1,16 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import { ArrowRightIcon } from '@heroicons/react/24/solid'; // Import ikon panah
+import { ArrowRightIcon } from '@heroicons/react/24/solid';
 import './blog.css';
 
 const SearchBar = () => {
   return (
     <div className="search-bar">
-      <input
-        type="text"
-        placeholder="Cari Blog atau Artikel disini"
-        className="search-input"
-      />
+      <input type="text" placeholder="Cari Blog atau Artikel disini" className="search-input" />
       <button className="search-button">
         <MagnifyingGlassIcon className="icon" />
       </button>
@@ -27,10 +24,14 @@ const Card = ({ title, description, image, author, date, category }) => {
           <span style={{ color: '#2A64F6', fontWeight: '600' }}>{category}</span>
         </div>
         <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h2 className="card-title" style={{ color: '#000', fontWeight: '600' }}>
-            {title}
-          </h2>
-          <ArrowRightIcon className="arrow-icon h-8 w-8 text-gray-500" />
+          <h2 className="card-title" style={{ color: '#000', fontWeight: '600' }}>{title}</h2>
+          {title === 'Peluncuran TBN Indonesia' ? (
+            <Link to="/isi-blog">
+              <ArrowRightIcon className="arrow-icon h-8 w-8 text-gray-500" />
+            </Link>
+          ) : (
+            <ArrowRightIcon className="arrow-icon h-8 w-8 text-gray-500" />
+          )}
         </div>
         <p className="card-description">{description}</p>
         <div className="card-author">
@@ -62,10 +63,6 @@ const Card = ({ title, description, image, author, date, category }) => {
     </div>
   );
 };
-
-
-
-
 
 const Blog = () => {
   const cardsData = [
@@ -155,12 +152,4 @@ const Blog = () => {
   );
 };
 
-const App = () => {
-  return (
-    <div className="App">
-      <Blog />
-    </div>
-  );
-};
-
-export default App;
+export default Blog;

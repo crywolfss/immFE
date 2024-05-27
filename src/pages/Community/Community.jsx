@@ -56,7 +56,9 @@ const Community = () => {
               </div>
               <div className="flex items-center justify-between mb-4">
       <h2 className="text-xl font-bold">Group</h2>
-      <p className="text-sm font-semibold text-blue-600">Jelajahi Grup</p>
+      <p className="text-sm font-semibold text-blue-600">
+        <a href="/cari-grup">Jelajahi Grup</a>
+      </p>
       </div>
               <ul>
               <li className="mb-5">
