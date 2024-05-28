@@ -41,7 +41,7 @@ export const Otp = () => {
 
       if (response.data.success == true) {
         // Navigate to the OTP verification page
-        navigate("/imm-verification-success", { state: { email, no_hp } });
+        navigate("/imm-home", { state: { email, no_hp } });
 
 
       } else {
