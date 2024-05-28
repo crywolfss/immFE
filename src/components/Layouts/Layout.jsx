@@ -19,7 +19,6 @@ const Layout = () => {
     const noNavbarRoutes = [
         '/imm-home',
         '/imm-myproject',
-        '/form-survey',
         '/imm-create',
         '/form-update',
         '/imm-profile',
