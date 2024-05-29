@@ -11,6 +11,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { BarChart, Gauge, gaugeClasses } from '@mui/x-charts'
 import { ImmBarChart } from '../../../common/Chart/BarChart/ImmBarChart'
 import { DataCalendar } from '../../../common/DataCalendar/DataCalendar'
+import { Link } from 'react-router-dom';
 
 export const MyProject = () => {
     return (
@@ -262,8 +263,18 @@ export const MyProject = () => {
                 </div>
             </div>
 
-            <div className="pt-2">
-                <h3 className='font-bold pt-10 text-xl'><span className='border-l border-2 mr-2 border-imm-secondary'></span>Done Projects And Surveys</h3>
+            <div className="pt-10">
+            <div className='flex justify-between items-center'>
+                    <h3 className='font-bold text-xl'><span className='border-l border-2 mr-2 border-imm-secondary'></span>Done Projects And Surveys</h3>
+                    <Link to="/form-survey">
+                        <Button 
+                            variant="contained" 
+                            sx={{ backgroundColor: 'black', '&:hover': { backgroundColor: 'black' } }}
+                        >
+                            + Buat Survey
+                        </Button>
+                    </Link>
+                </div>
                 <div className='mt-8 pt-3 border-2 border-black rounded-lg'>
                     <div className="px-4 flex flex-row justify-between items-center pb-2">
                         <h5 className='font-bold text-lg'>Project Completed</h5>
@@ -355,7 +366,7 @@ export const MyProject = () => {
 
                         <div className='flex flex-row gap-2 w-full pt-2'>
                             <div className='w-2/5'>
-                                <span className='flex justify-between'><p>Yes</p> <p>40%</p></span>
+                                <span className='flex justify-between'><p>No</p> <p>40%</p></span>
                                 <LinearProgress
                                     color="neutral"
                                     determinate
