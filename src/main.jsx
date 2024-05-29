@@ -29,6 +29,7 @@ import FormCreate from './pages/Imm/Create/FormCreate.jsx';
 import FormUpdate from './pages/Imm/Create/FormUpdate.jsx';
 import CariGrup from './pages/Community/CariGrup.jsx';
 import DashboardGrup from './pages/Community/DashboardGrup.jsx';
+import { FormSuccess } from './pages/Imm/MyProject/SuccesForm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
       { path: 'imm-create', element: <ImmCreate />},
       { path: 'form-create', element: <FormCreate />},
       { path: 'form-update', element: <FormUpdate />},
+      { path: 'form-succes', element: <FormSuccess />},
       { path: 'forum', element: <Forum />},
       { path: 'home', element: <Home /> },
       { path: 'community', element: <Community /> },
