@@ -3,21 +3,22 @@ import React from 'react';
 export const FormCreate = () => {
     return (
         <div className='mx-auto max-w-7xl lg:px-8'>
-            <div className="flex flex-col">
-                <div className="w-full">
-                    <h3 className='font-bold pt-8 text-xl mb-5' style={{ fontSize: '32px' }}>Buat Projek Baru</h3>
-                    <p className='text-lg font-semibold mb-2' style={{ fontSize: '17px' }}>Pilih Tag atau Buat yang Baru</p>
-                    <div className="bg-white rounded-2xl p-3 w-full outline outline-[#A1A1A1] mb-4">
-                        <div className="flex space-x-10">
-                            {['Environment', 'Education', 'Health'].map((card, index) => (
-                                <div key={index} className="bg-[#2A64F6] text-white rounded-2xl p-3 px-4 flex items-center">
-                                    <h4 className="text-s">{card}</h4>
-                                    <button className="ml-2 text-white">x</button>
-                                </div>
-                            ))}
-                        </div>
+        <div className="flex flex-col">
+            <div className="w-full">
+                <h3 className='font-bold pt-8 text-xl mb-5' style={{ fontSize: '32px' }}>Buat Projek Baru</h3>
+                <p className='text-lg font-semibold mb-2' style={{ fontSize: '17px' }}>Pilih Tag atau Buat yang Baru</p>
+                <div className="bg-white rounded-2xl p-3 w-full outline outline-[#A1A1A1] mb-4">
+                    <div className="flex space-x-10">
+                        {['Environment', 'Education', 'Health'].map((card, index) => (
+                            <div key={index} className="bg-[#2A64F6] text-white rounded-2xl p-3 px-4 flex items-center">
+                                <h4 className="text-s">{card}</h4>
+                                <button className="ml-2 text-white">x</button>
+                            </div>
+                        ))}
+                        <button className="bg-white text-[#2A64F6] border border-[#2A64F6] rounded-2xl px-4 py-2">Pilih Tag</button>
                     </div>
                 </div>
+            </div>
                 <div className="flex flex-col lg:flex-row">
                     <div className="w-full lg:w-2/3 lg:pr-8">
                         <div className='mb-2'>
@@ -40,6 +41,17 @@ export const FormCreate = () => {
                                     • "Untuk mengurangi emisi karbon sebesar 50% di sekolah-sekolah yang berpartisipasi dalam waktu tiga tahun."
                                     • "Untuk mendidik lebih dari 50.000 siswa tentang manfaat dan penerapan energi terbarukan."
                                 </textarea>
+                            </div>
+                            <div className='mb-2'>
+                                <label className='block text-sm font-semibold mb-2'>Target Pelanggan</label>
+                                <div className='flex space-x-4'>
+                                <input type='text' className='mt-1 block w-280 rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50'
+                                style={{ color: '#808080'}}
+                                value="Umur" />
+                                <select className='mt-1 w-280 rounded-md border-[#808080] bg-[#FFFFFF] text-grey'>
+                                        <option>Jenis Pekerjaan</option>
+                                    </select>
+                            </div>
                             </div>
                             <div className='mb-2'>
                                 <label className='text-sm font-semibold'>Tanggal Mulai Projek</label>
@@ -126,95 +138,18 @@ export const FormCreate = () => {
                                 <label className='block text-sm mb-4'>Jumlah Dana</label>
                                 <input type='text' className='mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-center' value="Rp. 3.252.000.000" />
                             </div>
-                            <div className='mb-4'>
-                                <label className='block text-sm mb-4'>Kategori SDGs</label>
-                                <div className="bg-[#7198F9] p-4 rounded-lg">
-                                    <div className="flex flex-col mb-4">
-                                    <label className="inline-flex items-center">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
-                                            <span className="block text-white font-bold ml-2">1. No Poverty</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked/>
-                                            <span className="ml-2 text-white">SDG Target 1.1</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked/>
-                                            <span className="ml-2 text-white">SDG Target 1.2</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
-                                            <span className="ml-2 text-white">SDG Target 1.3</span>
-                                        </label>
-                                    </div>
-                                    <div className="flex flex-col">
-                                         <label className="inline-flex items-center">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
-                                            <span className="block text-white font-bold ml-2">2. Zero Hunger</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
-                                            <span className="ml-2 text-white">SDG Target 2.1</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked/>
-                                            <span className="ml-2 text-white">SDG Target 2.2</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
-                                            <span className="ml-2 text-white">SDG Target 2.3</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='mb-4'>
-                                <label className='block text-sm mb-4'>Metric Name</label>
-                                <div className="bg-[#7198F9] p-4 rounded-lg">
-                                    <label className='flex items-center mb-2 text-white'>
-                                        <input type='checkbox' name='metric_name' className='mr-2' checked /> Client Individuals: Smallholder
-                                    </label>
-                                    <label className='flex items-center mb-2 text-white'>
-                                        <input type='checkbox' name='metric_name' className='mr-2' /> Supplier Individuals: Smallholder
-                                    </label>
-                                    <label className='flex items-center mb-2 text-white'>
-                                        <input type='checkbox' name='metric_name' className='mr-2' /> Payments to Supplier Individuals: Smallholder
-                                    </label>
-                                    <label className='flex items-center mb-2 text-white'>
-                                        <input type='checkbox' name='metric_name' className='mr-2' checked /> Percent Supplier Payments to Smallholders
-                                    </label>
-                                    <label className='flex items-center mb-2 text-white'>
-                                        <input type='checkbox' name='metric_name' className='mr-2' /> Crop Type
-                                    </label>
-                                </div>
-                            </div>
-                            <div className='mb-4'>
-                                <label className='block text-sm font-semibold mb-4'>Tag Tema Dampak Yang Selaras dengan Prioritas Dampak Anda</label>
-                                <div className='border border-black rounded-lg p-4'>
-                                    <div className='flex flex-wrap space-x-2 justify-center items-center'>
-                                        <div className='bg-[#2A64F6] text-white rounded-xl px-4 py-1 mb-2 flex items-center'>
-                                            <span>Pekerjaan</span>
-                                            <button className="ml-2 text-white">x</button>
-                                        </div>
-                                        <div className='bg-[#2A64F6] text-white rounded-xl px-4 py-1 mb-2 flex items-center'>
-                                            <span>infrastruktur</span>
-                                            <button className="ml-2 text-white">x</button>
-                                        </div>
-                                        <div className='bg-[#2A64F6] text-white rounded-xl px-4 py-1 flex items-center'>
-                                            <span>Pendidikan</span>
-                                            <button className="ml-2 text-white">x</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <button style={{textAlign: 'center'}} className='mt-1 block w-full h-10 rounded-md bg-[#7198F9] border-[#7198F9] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-white'>
+                                    <label>Klik untuk Pilih SDG, Indicator & Metric</label>
+                                </button>
                         </div>
-                    </div>
-                </div>
-                <div>
+                        <div>
                     <h3 className='font-bold pt-2 text-xl mb-5'>Maps</h3>
-                    <img src="src/assets/images/maps.svg" alt="maps" style={{width: '100%'}} />
+                    <img src="src/assets/images/maps_up.svg" alt="maps" style={{width: '100%'}} />
                     <div className="flex justify-center mt-10">
                         <button className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">Simpan dan Lanjutkan</button>
                     </div>
+                    </div>
+                </div>
                 </div>
                 <div style={{ height: '75px' }}></div>
             </div>
