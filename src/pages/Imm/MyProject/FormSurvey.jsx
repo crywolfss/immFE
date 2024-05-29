@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const FormSurvey = () => {
 
@@ -50,9 +51,11 @@ export const FormSurvey = () => {
                     </div>
                 ))}
                 <div className="flex items-center justify-center mt-16 mb-16">
+                <Link to="/form-succes">
                     <button className="bg-[#2A64F6] hover:bg-[#2A64F6] text-white font-semibold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline" type="button">
                         Simpan dan Bagikan Survey
                     </button>
+                </Link>
                 </div>
             </form>
         </div>
