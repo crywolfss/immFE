@@ -55,26 +55,50 @@ export const FormUpdate = () => {
                             </div>
                         </div>
                         <div className='mb-2'>
-                            <h4 className='text-lg font-semibold mb-3'>Pelaporan Kemajuan Tindak Lanjut</h4>
-                            <p className='text-s font-semibold mb-2 ml-3'>Ringkasan Progres Proyek</p>
-                            <div className="flex justify-start">
-                                {[...Array(5)].map((_, index) => (
-                                    <svg key={index} className="w-12 h-12 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{marginRight: '50px'}}>
-                                        {index < 2 ? (
-                                            <g>
-                                                <circle cx="12" cy="12" r="10" stroke="none" fill="#2A64F6" />
-                                                <text x="50%" y="50%" textAnchor="middle" stroke="white" strokeWidth="1px" dy=".3em" fontSize='8'>{index + 1}</text>
-                                            </g>
-                                        ) : (
-                                            <g>
-                                                <circle cx="12" cy="12" r="10" strokeWidth="1" className="text-[#2A64F6]" />
-                                                <text x="50%" y="50%" textAnchor="middle" stroke="#2A64F6" strokeWidth="1px" dy=".3em" fontSize='8'>{index + 1}</text>
-                                            </g>
-                                        )}
-                                    </svg>
-                                ))}
-                            </div>
-                        </div>
+                        <h4 class="text-lg font-semibold mb-3">Pelaporan Kemajuan Tindak Lanjut</h4>
+<p class="text-s font-semibold mb-2 ml-3">Ringkasan Progres Proyek</p>
+<div class="progress-container">
+    <div class="flex flex-row">
+        <div class="progress-step complete ">
+        <svg class="w-12 ml-5 h-12" fill="#2A64F6" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"></circle>
+                <text x="12" y="16" text-anchor="middle" font-size="8">1</text>
+            </svg>
+            <div class="mr-5 step-label" style={{ fontSize: '11px' }}>Identifikasi Masalah</div>
+        </div>
+        <div class="progress-step complete">
+            <svg class="w-12 ml-7 h-12" fill="#2A64F6" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"></circle>
+                <text x="12" y="16" text-anchor="middle" font-size="8">2</text>
+            </svg>
+            <div class="mr-5 step-label" style={{ fontSize: '11px' }}>Tujuan Proyek Tercapai</div>
+        </div>
+        <div class="progress-step incomplete">
+            <svg class="w-12 ml-8 h-12 text-blue-500" fill="none" stroke="#2A64F6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"></circle>
+                <text x="12" y="16" text-anchor="middle" font-size="8">3</text>
+            </svg>
+            <div class="mr-5 step-label" style={{ fontSize: '11px' }}>Pemilihan dan Implementasi</div>
+        </div>
+        <div class="progress-step incomplete">
+            <svg class="w-12 ml-4 h-12 text-blue-500" fill="none" stroke="#2A64F6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"></circle>
+                <text x="12" y="16" text-anchor="middle" font-size="8">4</text>
+            </svg>
+            <div class="mr-12 step-label" style={{ fontSize: '11px' }}>Evaluasi Dampak</div>
+        </div>
+        <div class="progress-step incomplete">
+            <svg class="w-12 h-12 text-blue-500" fill="none" stroke="#2A64F6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"></circle>
+                <text x="12" y="16" text-anchor="middle" font-size="8">5</text>
+            </svg>
+            <div class="mr-5 step-label" style={{ fontSize: '11px' }}>Pelaporan</div>
+        </div>
+    </div>
+</div>
+</div>
+
+                        
                         <div className='mt-8 lg:mt-0 ml-3'>
                             <h4 className='text-lg font-semibold mb-2'>Kategori Bisnis</h4>
                             <div className='mb-3'>
