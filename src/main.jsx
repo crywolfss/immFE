@@ -29,6 +29,7 @@ import FormCreate from './pages/Imm/Create/FormCreate.jsx';
 import FormUpdate from './pages/Imm/Create/FormUpdate.jsx';
 import CariGrup from './pages/Community/CariGrup.jsx';
 import DashboardGrup from './pages/Community/DashboardGrup.jsx';
+import { FormSurvey } from './pages/Imm/MyProject/FormSurvey.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
       { path: 'imm-profile', element: <ImmProfile /> },
       { path: 'imm-status', element: <ImmStatus /> },
       { path: 'imm-myproject', element: <MyProject />},
+      { path: 'form-survey', element: <FormSurvey />},
       { path: 'imm-create', element: <ImmCreate />},
       { path: 'form-create', element: <FormCreate />},
       { path: 'form-update', element: <FormUpdate />},
