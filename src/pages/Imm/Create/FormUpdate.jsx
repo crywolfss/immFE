@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@mui/material';
 
 export const FormUpdate = () => {
     return (
@@ -116,78 +117,66 @@ export const FormUpdate = () => {
                         </div>
                         </div>
                     </div>
-                            <div className='mb-4 mt-2'>
-                                <label className='block text-sm mb-4 font-semibold ml-5'>Pilih kategori SDG dan Metric yang paling relevan dengan proyek Anda</label>
-                                <div className="bg-[#7198F9] p-4 rounded-lg ml-10">
-                                    <div className="flex flex-col mb-4">
-                                    <label className="inline-flex items-center">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
-                                            <span className="block text-white font-bold ml-2">1. No Poverty</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked/>
-                                            <span className="ml-2 text-white">SDG Target 1.1</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked/>
-                                            <span className="ml-2 text-white">SDG Target 1.2</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
-                                            <span className="ml-2 text-white">SDG Target 1.3</span>
-                                        </label>
-                                    </div>
-                                    <div className="flex flex-col">
-                                         <label className="inline-flex items-center">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
-                                            <span className="block text-white font-bold ml-2">2. Zero Hunger</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
-                                            <span className="ml-2 text-white">SDG Target 2.1</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked/>
-                                            <span className="ml-2 text-white">SDG Target 2.2</span>
-                                        </label>
-                                        <label className="inline-flex items-center ml-5">
-                                            <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
-                                            <span className="ml-2 text-white">SDG Target 2.3</span>
-                                        </label>
-                                    </div>
-                                </div>
+                    <div className='mb-4 mt-2'>
+                        <label className='block text-sm mb-4  ml-5'>Kategori SDGs, Indicators dan Metrics</label>
+                        <div className="bg-[#7198F9] p-4 rounded-lg ml-5">
+                            <div className="flex flex-col mb-4">
+                                <label className="inline-flex items-center">
+                                    <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
+                                    <span className="block text-white font-bold ml-2">1. No Poverty</span>
+                                </label>
+                                <label className="inline-flex items-center ml-5">
+                                    <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked/>
+                                    <span className="ml-2 text-white">SDG Target 1.1</span>
+                                </label>
+                                <label className="inline-flex items-center ml-5">
+                                    <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked/>
+                                    <span className="ml-2 text-white">SDG Target 1.2</span>
+                                </label>
                             </div>
-                            <div className='mb-4'>
-                                <label className='block text-sm mb-4 ml-10'>Metric Name</label>
-                                <div className="bg-[#7198F9] p-4 rounded-lg ml-10">
-                                    <label className='flex items-center mb-2 text-white'>
-                                        <input type='checkbox' name='metric_name' className='mr-2' checked /> Client Individuals: Smallholder
-                                    </label>
-                                    <label className='flex items-center mb-2 text-white'>
-                                        <input type='checkbox' name='metric_name' className='mr-2' /> Supplier Individuals: Smallholder
-                                    </label>
-                                    <label className='flex items-center mb-2 text-white'>
-                                        <input type='checkbox' name='metric_name' className='mr-2' /> Payments to Supplier Individuals: Smallholder
-                                    </label>
-                                    <label className='flex items-center mb-2 text-white'>
-                                        <input type='checkbox' name='metric_name' className='mr-2' checked /> Percent Supplier Payments to Smallholders
-                                    </label>
-                                    <label className='flex items-center mb-2 text-white'>
-                                        <input type='checkbox' name='metric_name' className='mr-2' /> Crop Type
-                                    </label>
-                                </div>
+                            <div className="flex flex-col">
+                                <label className="inline-flex items-center">
+                                    <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
+                                    <span className="block text-white font-bold ml-2">2. Zero Hunger</span>
+                                </label>
+                                <label className="inline-flex items-center ml-5 mb-4">
+                                    <input type="checkbox" name="sdg_target" className="form-radio text-blue-600" checked />
+                                    <span className="ml-2 text-white">SDG Target 2.1</span>
+                                </label>
+                                <label className='flex items-center mb-2 text-white'>
+                                    <input type='checkbox' name='metric_name' className='form-radio mr-2' checked /> Client Individuals: Smallholder
+                                </label>
+                                <label className='flex items-center mb-2 text-white'>
+                                    <input type='checkbox' name='metric_name' className='form-radio mr-2' checked /> Percent Supplier Payments to Smallholders
+                                </label>
                             </div>
+                        </div>
+                    </div>
+                    <div className='flex justify-center mt-4 ml-5'>
+                        <button variant="contained" className='px-10 py-2 rounded bg-[#7198F9] text-white'>
+                        Klik untuk Update SDG, Indicator & Metric
+                        </button>
+                    </div>
+                    <div className='mb-2'>
+                                <label className='block text-sm font-semibold mb-2 mt-6 ml-5'>Pengukuran Metrics</label>
+                                <input 
+                                    type='text' 
+                                    className='w-full ml-5 border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 text-center' 
+                                    style={{ maxWidth: 'calc(100% - 40px)' }}
+                                    placeholder='Masukan nilai metrics'
+                                />
+                    </div>
                             <div className='mb-2'>
                                 <label className='block text-sm font-semibold mb-2 mt-6 ml-5'>Detail Dampak SDG pada Proyek</label>
-                                <p className="mb-2 ml-10 text-justify">Jelaskan secara rinci bagaimana proyek Anda mendukung SDG yang dipilih</p>
-                                <p className="mb-2 ml-10 text-xs font-semibold">Teks Pendek</p>
-                                <textarea className="w-full ml-10 mb-2 border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" 
+                                <p className="mb-2 ml-5 text-justify">Jelaskan secara rinci bagaimana proyek Anda mendukung SDG yang dipilih</p>
+                                <p className="mb-2 ml-5 text-xs font-semibold">Teks Pendek</p>
+                                <textarea className="w-full ml-5 mb-2 border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" 
                                 style={{ 
                                     maxWidth: 'calc(100% - 40px)',
                                 }}
                                 placeholder="Bagaimana proyek ini secara langsung mendukung SDG yang dipilih?"></textarea>
-                                <p className="mb-2 ml-10 text-xs font-semibold">Teks Panjang</p>
-                                <textarea className="w-full ml-10 border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" 
+                                <p className="mb-2 ml-5 text-xs font-semibold">Teks Panjang</p>
+                                <textarea className="w-full ml-5 border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" 
                                 style={{ 
                                     maxWidth: 'calc(100% - 40px)',
                                 }}
@@ -195,9 +184,9 @@ export const FormUpdate = () => {
                             </div>
                             <div className='mb-4'>
                                 <label className='block text-sm font-semibold mb-2 ml-5'>Evaluasi Dampak</label>
-                                <p className="mb-2 ml-10 text-justify">Sejauh mana elemen-elemen berikut ini terintegrasi dalam proyek Anda?</p>
-                                <p className="mb-2 ml-10 text-xs font-semibold">Pilihan</p>
-                                <div className='mb-3 ml-10'>
+                                <p className="mb-2 ml-5 text-justify">Sejauh mana elemen-elemen berikut ini terintegrasi dalam proyek Anda?</p>
+                                <p className="mb-2 ml-5 text-xs font-semibold">Pilihan</p>
+                                <div className='mb-3 ml-5'>
                                 <label className='flex items-center'>
                                     <input type='radio' name='pilihan' className='mr-2' /> Sama sekali tidak terintegrasi
                                 </label>
@@ -230,7 +219,7 @@ export const FormUpdate = () => {
                                 <label className='block text-sm font-semibold mb-2 ml-5'>Pendanaan SDG</label>
                                 <input 
                                     type='text' 
-                                    className='w-full ml-10 border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 text-center' 
+                                    className='w-full ml-5 border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 text-center' 
                                     style={{ maxWidth: 'calc(100% - 40px)' }}
                                     placeholder='Masukan Nominalnya'
                                 />
