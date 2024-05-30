@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const RegisForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    companyName: "",
-    country: "United States",
-    companyProfile: "",
-    province: "United States",
-    picName: "",
-    regency: "United States",
-    picPosition: "",
-    employeeCount: "",
-    phoneNumber: "",
-    companyType: "",
+    nama_perusahaan: "",
+    profil_perusahaan: "",
+    nama_pic: "",
+    posisi_pic: "",
+    nomor_telepon: "",
+    country: "",
+    provinsi: "",
+    kabupaten: "",
+    jumlah_karyawan: "",
+    tipe_perusahaan: "",
   });
 
   const handleChange = (e) => {
@@ -27,10 +28,13 @@ export const RegisForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("YOUR_API_ENDPOINT_HERE", formData);
-      console.log("Data submitted successfully:", response.data);
+      console.log(formData);
+      const response = await axios.post("http://127.0.0.1:8000/api/company", formData);
+      console.log('Response:', response.data);
+      // Navigate to a success page or another route if needed
+      navigate('/imm-home', { state: { company: formData } });
     } catch (error) {
-      console.error("Error submitting data:", error);
+      console.error('Error submitting form:', error);
     }
   };
 
@@ -45,7 +49,7 @@ export const RegisForm = () => {
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-1 text-start sm:grid-cols-6 p-6">
             <div className="sm:col-span-3">
               <label
-                htmlFor="companyName"
+                htmlFor="nama_perusahaan"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Nama Perusahaan
@@ -53,9 +57,9 @@ export const RegisForm = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="companyName"
-                  id="companyName"
-                  value={formData.companyName}
+                  name="nama_perusahaan"
+                  id="nama_perusahaan"
+                  value={formData.nama_perusahaan}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xl sm:text-sm sm:leading-6"
                 />
@@ -77,9 +81,11 @@ export const RegisForm = () => {
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xl sm:text-sm sm:leading-6"
                 >
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
+                  <option value="">Select Country</option>
+                  <option value="Indonesia">Indonesia</option>
+                  <option value="United States">United States</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Mexico">Mexico</option>
                 </select>
               </div>
             </div>
@@ -88,7 +94,7 @@ export const RegisForm = () => {
           <div className="grid grid-cols-1 gap-x-6 gap-y-8 text-start sm:grid-cols-6 p-6">
             <div className="sm:col-span-3">
               <label
-                htmlFor="companyProfile"
+                htmlFor="profil_perusahaan"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Profil Perusahaan
@@ -96,9 +102,9 @@ export const RegisForm = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="companyProfile"
-                  id="companyProfile"
-                  value={formData.companyProfile}
+                  name="profil_perusahaan"
+                  id="profil_perusahaan"
+                  value={formData.profil_perusahaan}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xl sm:text-sm sm:leading-6"
                 />
@@ -107,23 +113,20 @@ export const RegisForm = () => {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="province"
+                htmlFor="provinsi"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Provinsi
               </label>
               <div className="mt-2">
-                <select
-                  id="province"
-                  name="province"
-                  value={formData.province}
+                <input
+                  type="text"
+                  name="provinsi"
+                  id="provinsi"
+                  value={formData.provinsi}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xl sm:text-sm sm:leading-6"
-                >
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
+                />
               </div>
             </div>
           </div>
@@ -131,7 +134,7 @@ export const RegisForm = () => {
           <div className="grid grid-cols-1 gap-x-6 gap-y-8 text-start sm:grid-cols-6 p-6">
             <div className="sm:col-span-3">
               <label
-                htmlFor="picName"
+                htmlFor="nama_pic"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Nama PIC
@@ -139,9 +142,9 @@ export const RegisForm = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="picName"
-                  id="picName"
-                  value={formData.picName}
+                  name="nama_pic"
+                  id="nama_pic"
+                  value={formData.nama_pic}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xl sm:text-sm sm:leading-6"
                 />
@@ -150,23 +153,20 @@ export const RegisForm = () => {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="regency"
+                htmlFor="kabupaten"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Kabupaten
               </label>
               <div className="mt-2">
-                <select
-                  id="regency"
-                  name="regency"
-                  value={formData.regency}
+                <input
+                  type="text"
+                  name="kabupaten"
+                  id="kabupaten"
+                  value={formData.kabupaten}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xl sm:text-sm sm:leading-6"
-                >
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
+                />
               </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ export const RegisForm = () => {
           <div className="grid grid-cols-1 gap-x-6 gap-y-8 text-start sm:grid-cols-6 p-6">
             <div className="sm:col-span-3">
               <label
-                htmlFor="picPosition"
+                htmlFor="posisi_pic"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Posisi PIC
@@ -182,9 +182,9 @@ export const RegisForm = () => {
               <div className="mt-2">
                 <input
                   type="text"
-                  name="picPosition"
-                  id="picPosition"
-                  value={formData.picPosition}
+                  name="posisi_pic"
+                  id="posisi_pic"
+                  value={formData.posisi_pic}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xl sm:text-sm sm:leading-6"
                 />
@@ -193,7 +193,7 @@ export const RegisForm = () => {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="employeeCount"
+                htmlFor="jumlah_karyawan"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Jumlah Karyawan
@@ -201,9 +201,9 @@ export const RegisForm = () => {
               <div className="mt-2">
                 <input
                   type="number"
-                  name="employeeCount"
-                  id="employeeCount"
-                  value={formData.employeeCount}
+                  name="jumlah_karyawan"
+                  id="jumlah_karyawan"
+                  value={formData.jumlah_karyawan}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xl sm:text-sm sm:leading-6"
                 />
@@ -214,7 +214,7 @@ export const RegisForm = () => {
           <div className="grid grid-cols-1 gap-x-6 gap-y-8 text-start sm:grid-cols-6 p-6">
             <div className="sm:col-span-3">
               <label
-                htmlFor="phoneNumber"
+                htmlFor="nomor_telepon"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Nomor Telepon
@@ -222,9 +222,9 @@ export const RegisForm = () => {
               <div className="mt-2">
                 <input
                   type="tel"
-                  name="phoneNumber"
-                  id="phoneNumber"
-                  value={formData.phoneNumber}
+                  name="nomor_telepon"
+                  id="nomor_telepon"
+                  value={formData.nomor_telepon}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xl sm:text-sm sm:leading-6"
                 />
@@ -233,17 +233,17 @@ export const RegisForm = () => {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="companyType"
+                htmlFor="tipe_perusahaan"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Tipe Perusahaan
               </label>
               <div className="mt-2">
                 <input
-                  type="number"
-                  name="companyType"
-                  id="companyType"
-                  value={formData.companyType}
+                  type="text"
+                  name="tipe_perusahaan"
+                  id="tipe_perusahaan"
+                  value={formData.tipe_perusahaan}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xl sm:text-sm sm:leading-6"
                 />
@@ -264,3 +264,4 @@ export const RegisForm = () => {
     </div>
   );
 };
+

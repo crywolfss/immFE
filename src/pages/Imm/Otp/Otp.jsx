@@ -6,6 +6,7 @@ import axios from "axios";
 export const Otp = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [secondsRemaining, setSecondsRemaining] = useState(60);
   const [error, setError] = useState(null);
   const { email, no_hp } = location.state || {};
 
@@ -41,7 +42,7 @@ export const Otp = () => {
 
       if (response.data.success == true) {
         // Navigate to the OTP verification page
-        navigate("/imm-home", { state: { email, no_hp } });
+        navigate("/imm-verification-success", { state: { email, no_hp } });
 
 
       } else {
@@ -55,6 +56,39 @@ export const Otp = () => {
       setError(error.response?.data?.message || error.message);
     }
   };
+
+
+  const handleResendOtp = async () => {
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/otp", {
+        email: email,
+        no_hp: no_hp,
+      });
+
+      if (response.data.success) {
+        // Optionally show a success message
+        setError("Kode OTP berhasil dikirim ulang");
+      } else {
+        setError(response.data.message || "Failed to resend OTP");
+      }
+    } catch (error) {
+      setError(error.response?.data?.message || error.message);
+    }
+  };
+
+  const countdown = () => {
+    for (let i = secondsRemaining; i >= 0; i--) {
+        setTimeout(() => {
+            setSecondsRemaining(i);
+            if (i === 0) {
+                // Fallback navigation in case the fetch takes too long
+                navigate('/imm-registration-form');
+            }
+        }, (secondsRemaining - i) * 1000);
+    }
+};
+
+countdown();
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -93,13 +127,14 @@ export const Otp = () => {
                 </div>
                 {error && <div className="text-red-500 text-sm">{error}</div>}
                 <div className="flex flex-col items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
-                  <p>Belum menerima kode? tunggu 01:00</p>
-                  <Link
-                    to="/imm-verification-success"
+                  <p>Belum menerima kode? tunggu {secondsRemaining}</p>
+                  <button
+                    type="button"
+                    onClick={handleResendOtp}
                     className="flex flex-row items-center text-[#0F1F3E]"
                   >
                     Kirim ulang kode
-                  </Link>
+                  </button>
                 </div>
 
                 <button
