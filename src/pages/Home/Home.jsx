@@ -4,13 +4,22 @@ import { LinearProgress } from '@mui/joy'
 import { Gauge } from '@mui/x-charts'
 import { DateCalendar, LocalizationProvider } from '@mui/x-date-pickers'
 import { Card, ListItem } from 'flowbite-react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { useNavigate } from 'react-router-dom'
 
 
 
 
 export const Home = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+  });
   return (
     <div className='mx-auto max-w-7xl items-center p-6 lg:px-8'>
       {/*Dashboard  */}
