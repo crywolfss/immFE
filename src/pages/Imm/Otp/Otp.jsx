@@ -81,8 +81,6 @@ export const Otp = () => {
         setTimeout(() => {
             setSecondsRemaining(i);
             if (i === 0) {
-                // Fallback navigation in case the fetch takes too long
-                navigate('/imm-registration-form');
             }
         }, (secondsRemaining - i) * 1000);
     }
