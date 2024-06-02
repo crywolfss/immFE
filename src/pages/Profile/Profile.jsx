@@ -1,15 +1,47 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Profile = () => {
+    const [profileData, setProfileData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        navigate('/login');
-      }
-    });
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login');
+        } else {
+            const fetchProfileData = async () => {
+                try {
+                    const response = await axios.get('http://127.0.0.1:8000/api/user', {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                    // Menggunakan data pengguna dari response untuk menampilkan profil
+                    setProfileData(response.data); 
+                } catch (err) {
+                    setError(err.message || 'Error fetching profile data');
+                } finally {
+                    setLoading(false);
+                }
+            };
+    
+            fetchProfileData();
+        }
+    }, [navigate]);
+       
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
     const days = Array.from({ length: 30 }, (_, index) => index + 1);
     return (
         <div className="container mx-auto p-4">
@@ -19,19 +51,19 @@ const Profile = () => {
                     <div className="flex items-start">
                         <div className="flex flex-col ml-4">
                             <div className="flex items-center">
-                                <h1 className="text-2xl font-bold mt-6">Rizard Hazard</h1>
+                                <h1 className="text-2xl font-bold mt-6">{profileData.nama_lengkap}</h1>
                             </div>
                             <div className="flex items-center font-semibold mt-4 mb-2">
                                 <img src="src/assets/icons/icon-phone.svg" alt="Phone Icon" className="w-4 h-4 mr-2" />
-                                <p>+6289534108080</p>
+                                <p>{profileData.no_hp}</p>
                             </div>
                             <div className="flex items-center font-semibold mb-2">
                                 <img src="src/assets/icons/icon-email.svg" alt="Email Icon" className="w-5 h-5 mr-2" />
-                                <p>rizardhazard@gmail.com</p>
+                                <p>{profileData.email}</p>
                             </div>
                             <p className="flex items-center font-semibold mb-6">
                                 <img src="src/assets/icons/icon-location.svg" alt="Location Icon" className="w-5 h-5 mr-2" />
-                                Jl.Kuban Meruya Ilir Bl M/80 <br/> Jakarta, DKI Jakarta.
+                                {profileData.alamat}
                             </p>
                             <div className="flex">
                             <button className="mt-2 px-2 bg-white text-[#4880FF] border border-[#4880FF] rounded relative mr-2">
@@ -287,4 +319,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default Profile
