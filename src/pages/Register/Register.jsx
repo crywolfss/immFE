@@ -1,43 +1,70 @@
 import React from 'react';
 import { Navbar } from '../../components/Navbar/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
+import axios from 'axios';
 
 export const Register = () => {
-    
-    const handleSaveData = () => {
-        const firstName = document.getElementById("first-name").value;
-        const country = document.getElementById("country").value;
+    const navigate = useNavigate();
+
+    const handleSaveData = async () => {
+        const nama_lengkap = document.getElementById("first-name").value;
+        const negara = document.getElementById("country").value;
         const nik = document.getElementById("nik").value;
         const provinsi = document.getElementById("provinsi").value;
         const email = document.getElementById("email").value;
         const alamat = document.getElementById("alamat").value;
         const password = document.getElementById("password").value;
-        const phoneNumber = document.getElementById("phone-number").value;
+        const no_hp = document.getElementById("phone-number").value;
 
         if (
-            firstName === '' ||
-            country === '' ||
+            nama_lengkap === '' ||
+            negara === '' ||
             nik === '' ||
             provinsi === '' ||
             email === '' ||
             alamat === '' ||
             password === '' ||
-            phoneNumber === ''
+            no_hp === ''
         ) {
             // Jika ada field yang kosong, tampilkan pesan alert
             alert("Mohon mengisi form terlebih dahulu.");
         } else {
-            // Jika semua field terisi, tampilkan pesan alert berhasil
-            alert("Berhasil membuat akun");
+            try {
+                console.log(nama_lengkap);
+                console.log(nik);
+                // Mengirim data ke endpoint /registered
+                const response = await axios.post("http://127.0.0.1:8000/api/register", {
+                    nama_lengkap,
+                    nik,
+                    email,
+                    password,
+                    negara,
+                    provinsi,
+                    alamat,
+                    no_hp
+                });
 
-            // Arahkan pengguna ke halaman login
-            window.location.href = "/login";
+                if (response.status === 200) {
+                    // Jika berhasil, tampilkan pesan alert berhasil
+                    alert("Berhasil membuat akun");
+
+                    // Arahkan pengguna ke halaman login
+                    navigate("/login");
+                } else {
+                    // Jika gagal, tampilkan pesan alert gagal
+                    alert("Gagal membuat akun, coba lagi.");
+                }
+            } catch (error) {
+                // Tangani error yang mungkin terjadi selama permintaan
+                alert("Terjadi kesalahan: " + error.message);
+                console.log(error);
+            }
         }
     };
-    
+
     return (
-        <div className='mx-auto  p-6 lg:px-8'>
-                        <div className="navbar-divider" style={{ borderBottom: '4px solid #7198F9', marginTop: '-25px', marginBottom: '40px', marginLeft: '-6rem', marginRight: '-2rem' }}></div>
+        <div className='mx-auto p-6 lg:px-8'>
+            <div className="navbar-divider" style={{ borderBottom: '4px solid #7198F9', marginTop: '-25px', marginBottom: '40px', marginLeft: '-6rem', marginRight: '-2rem' }}></div>
             <div className="lg:px-8 border-gray-900/10 pb-12">
                 <div className='flex flex-col w-full items-center'>
                     <img
@@ -202,6 +229,5 @@ export const Register = () => {
             </div>
 
         </div>
-
     );
 };

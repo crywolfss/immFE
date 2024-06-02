@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Bootcamp = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        navigate('/login');
+      }
+    });
     return (
         <div className="container mx-auto p-4">
             <div className="bg-white p-6 mb-8 flex flex-col md:flex-row items-center">

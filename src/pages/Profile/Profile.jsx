@@ -1,4 +1,15 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 const Profile = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        navigate('/login');
+      }
+    });
     const days = Array.from({ length: 30 }, (_, index) => index + 1);
     return (
         <div className="container mx-auto p-4">
