@@ -12,7 +12,12 @@ export const Navbar = () => {
 
     const handleSetActiveButton = (buttonName) => {
         setActiveButton(buttonName);
+
     };
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+      };
 
     return (
         <header className='bg-white border-b shadow-md border-imm-main'>
@@ -79,17 +84,11 @@ export const Navbar = () => {
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4">
                 <img src="src/assets/icons/icon-notification.svg" alt="notification" className="h-10 w-10 mr-4" />
-                    {/* <div className='border-2 rounded-md border-imm-main'>
-                        <a href="/login" className="p-4 text-sm font-normal leading-8 text-imm-main">
-                            Login
-                        </a>
-                    </div>
-
                     <div className='border-2 rounded-md border-imm-main bg-imm-main shadow-lg'>
-                        <a href="/register" onClick={() => handleSetActiveButton('register')} className="p-4 text-sm font-normal leading-8 text-white">
-                            Register
+                        <a href="/login" onClick={handleLogout} className="p-4 text-sm font-normal leading-8 text-white">
+                            Logout
                         </a>
-                    </div> */}
+                    </div> 
                 </div>
             </nav>
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
