@@ -1,63 +1,100 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import * as Survey from 'survey-react';
+import 'survey-react/survey.css';
+import axios from 'axios'; // For making API calls
 
 export const FormSurvey = () => {
+    const [shareableLink, setShareableLink] = useState('');
+
+    const surveyJson = {
+        title: "Survey",
+        description: "Please fill out the following survey.",
+        pages: [
+            {
+                elements: [
+                    {
+                        type: "text",
+                        name: "businessProjectName",
+                        title: "Masukkan Nama Business/Project",
+                        isRequired: true,
+                    },
+                    {
+                        type: "text",
+                        name: "surveyTitle",
+                        title: "Masukkan Judul Survey",
+                        isRequired: true,
+                    },
+                    {
+                        type: "text",
+                        name: "surveyDescription",
+                        title: "Masukkan Deskripsi Survey",
+                        isRequired: true,
+                    },
+                    {
+                        type: "text",
+                        name: "fullName",
+                        title: "Nama Lengkap",
+                        isRequired: true,
+                    },
+                    {
+                        type: "text",
+                        inputType: "email",
+                        name: "email",
+                        title: "Email",
+                        isRequired: true,
+                    },
+                    {
+                        type: "text",
+                        name: "phoneNumber",
+                        title: "No HP",
+                        isRequired: true,
+                    },
+                    {
+                        type: "paneldynamic",
+                        name: "questions",
+                        title: "Pertanyaan",
+                        templateElements: [
+                            {
+                                type: "comment",
+                                name: "question",
+                                title: "Ketik Di Sini Pertanyaan Anda",
+                                isRequired: true,
+                            }
+                        ],
+                        panelCount: 5,
+                        panelAddText: "Tambah Pertanyaan",
+                        panelRemoveText: "Hapus Pertanyaan",
+                        maxPanelCount: 5
+                    }
+                ]
+            }
+        ]
+    };
+
+    const surveyComplete = async (result) => {
+        console.log("Survey results: ", result.data);
+
+        try {
+            // Mock API call to store survey results and get a unique link
+            const response = await axios.post('https://example.com/api/store-survey', result.data);
+            // Assuming the response contains the unique link
+            const uniqueLink = response.data.link;
+            setShareableLink(uniqueLink);
+
+        } catch (error) {
+            console.error('Error storing survey results:', error);
+        }
+    };
 
     return (
         <div className='mx-auto max-w-7xl p-6 lg:px-8'>
-            <form>
-                <div className="mb-4 mt-16">
-                    <label className="block text-md font-bold mb-2">
-                        Masukkan Nama Business/Project
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" />
+            <Survey.Survey json={surveyJson} onComplete={surveyComplete} />
+            {shareableLink && (
+                <div className="mt-8">
+                    <p>Your survey has been saved. Share this link:</p>
+                    <a href={shareableLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">{shareableLink}</a>
                 </div>
-                <div className="mb-4">
-                    <label className="block text-md font-bold mb-2">
-                        Masukkan Judul Survey
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-md font-bold mb-2">
-                        Masukkan Deskripsi Survey
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-md font-bold mb-2">
-                        Nama Lengkap
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-md font-bold mb-2">
-                        Email
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" />
-                </div>
-                <div className="mb-16">
-                    <label className="block text-md font-bold mb-2">
-                        No HP
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" />
-                </div>
-                {[1, 2, 3, 4, 5].map((index) => (
-                    <div className="mb-4" key={index}>
-                        <label className="block text-md text-sm font-bold mb-2">
-                            Pertanyaan {index}.
-                        </label>
-                        <textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="4" placeholder="Ketik Di Sini Pertanyaan Anda"></textarea>
-                    </div>
-                ))}
-                <div className="flex items-center justify-center mt-16 mb-16">
-                <Link to="/form-succes">
-                    <button className="bg-[#2A64F6] hover:bg-[#2A64F6] text-white font-semibold py-2 px-4 rounded-3xl focus:outline-none focus:shadow-outline" type="button">
-                        Simpan dan Bagikan Survey
-                    </button>
-                </Link>
-                </div>
-            </form>
+            )}
         </div>
     );
 };
