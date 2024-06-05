@@ -25,6 +25,7 @@ export const Login = () => {
 
         // Store the token in local storage or state management
         localStorage.setItem("token", token);
+        localStorage.setItem("email", email);
         console.log(token);
         // Redirect to the home page or another page
         navigate("/home");

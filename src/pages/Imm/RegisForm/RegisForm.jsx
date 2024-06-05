@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const RegisForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+
     nama_perusahaan: "",
     profil_perusahaan: "",
     nama_pic: "",
@@ -24,6 +25,26 @@ export const RegisForm = () => {
       [name]: value,
     });
   };
+
+  // useEffect(() => {
+  //   const fetchUserId = async () => {
+  //     const storedEmail = localStorage.getItem('email');
+  //     if (storedEmail) {
+  //       try {
+  //         const response = await axios.get(`http://127.0.0.1:8000/api/user/${storedEmail}`);
+  //         setFormData(prevFormData => ({
+  //           ...prevFormData,
+  //           user_id: response.data.id
+  //         }));
+  //         console.log(response.data);
+  //         console.log(response.data.id);
+  //       } catch (error) {
+  //         console.error('Error fetching user ID:', error);
+  //       }
+  //     }
+  //   };
+  //   fetchUserId();
+  // }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,6 +67,8 @@ export const RegisForm = () => {
         </h2>
 
         <form onSubmit={handleSubmit}>
+          {/* <input hidden name="user_id" id="user_id" value={formData.user_id} onChange={handleChange} /> */}
+
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-1 text-start sm:grid-cols-6 p-6">
             <div className="sm:col-span-3">
               <label
@@ -264,4 +287,3 @@ export const RegisForm = () => {
     </div>
   );
 };
-
