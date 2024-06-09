@@ -47,6 +47,11 @@ export const SdgS = () => {
         }
     };
 
+    const handleSave = () => {
+        // Logic to handle save action
+        console.log('Save button clicked');
+    };
+
     return (
         <div className='mx-auto max-w-7xl lg:px-8 py-8'>
             <div className="text-center">
@@ -87,6 +92,32 @@ export const SdgS = () => {
                     </div>
                 ))}
             </div>
+            <div className="text-center mt-10">
+                <button 
+                    onClick={handleSave} 
+                    className="custom-button"
+                >
+                    Simpan
+                </button>
+            </div>
+            <style jsx>{`
+                .custom-button {
+                    background-color: #2D6AE0;
+                    color: #fff;
+                    font-size: 16px;
+                    font-weight: bold;
+                    padding: 12px 24px;
+                    border: none;
+                    border-radius: 50px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                }
+
+                .custom-button:hover {
+                    background-color: #1A56D0;
+                }
+            `}</style>
         </div>
     );
 };
