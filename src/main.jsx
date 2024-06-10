@@ -12,6 +12,7 @@ import { Otp } from './pages/Imm/Otp/Otp.jsx';
 import { Verification } from './pages/Imm/Verification/Verification.jsx';
 import { RegisForm } from './pages/Imm/RegisForm/RegisForm.jsx';
 import { SdgS } from './pages/Imm/Create/SdgS.jsx';
+import { Matrics } from './pages/Imm/Create/Matrics.jsx';
 import { ImmHome } from './pages/Imm/ImmHome/ImmHome.jsx';
 import { ImmProfile } from './pages/Imm/ImmProfile/immprofile.jsx';
 import { ImmStatus } from './pages/Imm/Status/status.jsx';
@@ -57,6 +58,7 @@ const router = createBrowserRouter([
       { path: 'form-succes', element: <FormSuccess />},
       { path: 'forum', element: <Forum />},
       { path: 'SdgS', element: <SdgS />},
+      { path: 'Matrics', element: <Matrics />},
       { path: 'home', element: <Home /> },
       { path: 'community', element: <Community /> },
       { path: 'cari-grup', element: <CariGrup /> },

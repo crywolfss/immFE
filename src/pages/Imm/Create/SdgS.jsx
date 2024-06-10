@@ -49,6 +49,7 @@ export const SdgS = () => {
 
     const handleSave = () => {
         // Logic to handle save action
+        localStorage.setItem('indicator', JSON.stringify(checkedValues));
         console.log('Save button clicked');
     };
 
