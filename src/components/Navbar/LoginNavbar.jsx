@@ -20,7 +20,7 @@ const LoginNavbar = () => {
                         <span className='font-bold text-2xl mr-4'>IMM Impact Mate</span>
                     </a>
                 </div>
-                <div className='hidden lg:flex lg:flex-1 lg:justify-end gap-4'>
+                {/* <div className='hidden lg:flex lg:flex-1 lg:justify-end gap-4'>
                     <NavLink
                         to="/home"
                     >
@@ -46,7 +46,7 @@ const LoginNavbar = () => {
                     >
                         Profile
                     </NavLink>
-                </div>
+                </div> */}
                 <div className="flex lg:hidden">
                     <button
                         type='button'
@@ -79,7 +79,7 @@ const LoginNavbar = () => {
                     </div>
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
-                            <div className="space-y-2 py-6">
+                            {/* <div className="space-y-2 py-6">
                                 <NavLink
                                     to="/home"
                                 >
@@ -105,7 +105,7 @@ const LoginNavbar = () => {
                                 >
                                     Profile
                                 </NavLink>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </Dialog.Panel>

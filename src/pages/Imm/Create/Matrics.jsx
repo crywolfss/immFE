@@ -8,15 +8,21 @@ export const Matrics = () => {
     const [selectedMetrics, setSelectedMetrics] = useState([]);
 
     useEffect(() => {
-        const storedSelectedIndicators = JSON.parse(localStorage.getItem('checkedValues')) || {};
-        // Flatten the storedSelectedIndicators into an array of indicator IDs
-        const indicatorIds = Object.values(storedSelectedIndicators).flatMap(Object.keys).map(Number);
+        const storedSelectedIndicators = JSON.parse(localStorage.getItem('indicator')) || {};
+
+        // Extract the indicator IDs where the value is true
+        const indicatorIds = Object.entries(storedSelectedIndicators)
+            .flatMap(([_, indicators]) => Object.entries(indicators))
+            .filter(([_, value]) => value === true)
+            .map(([key, _]) => Number(key));
+        
+        console.log('indicator id :', indicatorIds);
         setSelectedIndicators(indicatorIds);
 
         // Fetch data for each selected indicator
         const fetchData = async () => {
             try {
-                const promises = indicatorIds.map(id => axios.get(`http://127.0.0.1:8000/get-metric-by-indicator/${id}`));
+                const promises = indicatorIds.map(id => axios.get(`http://127.0.0.1:8000/api/get-metric-by-indicator/${id}`));
                 const responses = await Promise.all(promises);
                 const metrics = responses.flatMap(response => response.data);
                 setMetricsData(metrics);
@@ -25,7 +31,10 @@ export const Matrics = () => {
                 console.error('Error fetching data:', error);
             }
         };
-        fetchData();
+        
+        if (indicatorIds.length > 0) {
+            fetchData();
+        }
     }, []);
 
     useEffect(() => {
@@ -44,6 +53,7 @@ export const Matrics = () => {
 
     const handleSave = () => {
         // Logic to handle save action
+        localStorage.setItem('metrics', JSON.stringify(selectedMetrics));
         console.log('Selected metrics:', selectedMetrics);
     };
 
