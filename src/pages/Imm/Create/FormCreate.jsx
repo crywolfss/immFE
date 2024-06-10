@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-//import { multipleSelect, MultipleSelectInstance } from 'multiple-select-vanilla';
+import { useState } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 export const FormCreate = () => {
   const [formData, setFormData] = useState({
@@ -23,85 +23,7 @@ export const FormCreate = () => {
     matrik: "",
   });
 
-  const [tags, setTags] = useState([]);
-  const [sdgs, setSdgs] = useState([]);
-  const [indicators, setIndicators] = useState([]);
-  const [metrics, setMetrics] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchTags = async () => {
-      try {
-        await axios.get("http://127.0.0.1:8000/api/tag").then((response) => {
-          setTags(response.data);
-          return
-        });
-      } catch (err) {
-        setError(err.message || 'Error fetching profile data');
-    } finally {
-        setLoading(false);
-    }
-    };
-
-    const fetchSdgs = async () => {
-      try {
-        await axios.get("http://127.0.0.1:8000/api/sdg").then((response) => {
-          setSdgs(response.data);
-          return
-        });
-      } catch (err) {
-        setError(err.message || 'Error fetching profile data');
-    } finally {
-        setLoading(false);
-    }
-    };
-
-    const fetchIndicators = async () => {
-      try {
-        await axios.get("http://127.0.0.1:8000/api/indicator").then((response) => {
-            setIndicators(response.data);
-            return
-          });
-      } catch (err) {
-        setError(err.message || 'Error fetching profile data');
-    } finally {
-        setLoading(false);
-    }
-    };
-
-    const fetchMetrics = async () => {
-      try {
-        await axios.get("http://127.0.0.1:8000/api/matrik").then((response) => {
-          setMetrics(response.data);
-          return
-        });
-      } catch (err) {
-        setError(err.message || 'Error fetching profile data');
-    } finally {
-        setLoading(false);
-    }
-    };
-
-    const fetchTagMetrics = async () => {
-      try {
-        await axios.get("http://127.0.0.1:8000/api/matrik").then((response) => {
-          setMetrics(response.data);
-          return
-        });
-      } catch (err) {
-        setError(err.message || 'Error fetching profile data');
-    } finally {
-        setLoading(false);
-    }
-    };
-
-    fetchTags();
-    fetchSdgs();
-    fetchIndicators();
-    fetchMetrics();
-    fetchTagMetrics();
-  },);
+  const [tags, setTags] = useState(["No Poverty - 1.1 & 1.2", "Zero Hunger - 2.1", "Metric 1 & 5"]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -137,73 +59,30 @@ export const FormCreate = () => {
     }
   };
 
-  const filteredIndicators = indicators.filter(
-    (indicator) => indicator.sdg_id === parseInt(formData.sdg)
-  );
-
-
-  // const filteredTagMatriks = indicators.filter(
-  //   (tagMatriks) => indicator.sdg_id === parseInt(formData.tags)
-  // );
-
-  // const filteredMatrics = indicators.filter(
-  //   (indicator) => indicator.sdg_id === parseInt(formData.sdg)
-  // );
-
-  if (loading) {
-    return <div>Loading...</div>;
-}
-
-if (error) {
-    return <div>Error: {error}</div>;
-}
-
-
   return (
     <div className="mx-auto max-w-7xl lg:px-8">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col">
           <div className="w-full">
-            <h3
-              className="font-bold pt-8 text-xl mb-5"
-              style={{ fontSize: "32px" }}
-            >
-              Buat Projek Baru
-            </h3>
-            <p
-              className="text-lg font-semibold mb-2"
-              style={{ fontSize: "17px" }}
-            >
-              Pilih Tag atau Buat yang Baru
-            </p>
+            <h3 className="font-bold pt-8 text-xl mb-5" style={{ fontSize: "32px" }}>Buat Projek Baru</h3>
+            <p className="text-lg font-semibold mb-2" style={{ fontSize: "17px" }}>Pilih Tag atau Buat yang Baru</p>
             <div className="bg-white rounded-2xl p-3 w-full outline outline-[#A1A1A1] mb-4">
-            <select
-                    className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                    name="matrik"
-                    value={formData.tags}
-                    onChange={handleChange}
-                  >
-                    <option value="" disabled>
-                      Pilih Tag
-                    </option>
-                    {tags.map((tag) => (
-                      <option key={tag.id} value={tag.id}>
-                        {tag.nama}
-                      </option>
-                    ))};
-                  </select>
+              <select
+                className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                name="matrik"
+                value={formData.tags}
+                onChange={handleChange}
+              >
+                <option value="" disabled>Pilih Tag</option>
+              </select>
             </div>
           </div>
           <div className="flex flex-col lg:flex-row">
             <div className="w-full lg:w-2/3 lg:pr-8">
               <div className="mb-2">
-                <h4 className="text-lg font-semibold mb-3">
-                  Tentang Proyek Anda
-                </h4>
+                <h4 className="text-lg font-semibold mb-3">Tentang Proyek Anda</h4>
                 <div className="mb-2">
-                  <label className="block text-sm font-semibold mb-2">
-                    Nama Projek
-                  </label>
+                  <label className="block text-sm font-semibold mb-2">Nama Projek</label>
                   <input
                     type="text"
                     className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
@@ -214,9 +93,7 @@ if (error) {
                   />
                 </div>
                 <div className="mb-2">
-                  <label className="block text-sm font-semibold">
-                    Deskripsi Projek
-                  </label>
+                  <label className="block text-sm font-semibold">Deskripsi Projek</label>
                   <textarea
                     className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                     rows="2"
@@ -226,9 +103,7 @@ if (error) {
                   />
                 </div>
                 <div className="mb-2">
-                  <label className="block text-sm font-semibold">
-                    Tujuan Projek
-                  </label>
+                  <label className="block text-sm font-semibold">Tujuan Projek</label>
                   <textarea
                     className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                     rows="3"
@@ -238,9 +113,7 @@ if (error) {
                   />
                 </div>
                 <div className="mb-2">
-                  <label className="block text-sm font-semibold mb-2">
-                    Target Pelanggan
-                  </label>
+                  <label className="block text-sm font-semibold mb-2">Target Pelanggan</label>
                   <div className="flex space-x-4">
                     <input
                       type="text"
@@ -260,9 +133,7 @@ if (error) {
                   </div>
                 </div>
                 <div className="mb-2">
-                  <label className="text-sm font-semibold">
-                    Tanggal Mulai Projek
-                  </label>
+                  <label className="text-sm font-semibold">Tanggal Mulai Projek</label>
                   <div className="flex space-x-4">
                     <input
                       type="date"
@@ -274,9 +145,7 @@ if (error) {
                   </div>
                 </div>
                 <div className="mb-2">
-                  <label className="text-sm font-semibold">
-                    Tanggal Berakhir Projek
-                  </label>
+                  <label className="text-sm font-semibold">Tanggal Berakhir Projek</label>
                   <div className="flex space-x-4">
                     <input
                       type="date"
@@ -291,15 +160,8 @@ if (error) {
               <div className="mb-2">
                 <h4 className="text-lg font-semibold mb-2">Import Data</h4>
                 <div className="bg-[#7198F9] p-8 rounded-md flex items-center justify-center flex-col">
-                  <img
-                    src="src/assets/icons/icon-upload.svg"
-                    alt="Upload icon"
-                    className="mb-2"
-                  />
-                  <p className="text-white text-center">
-                    Unggah berbagai informasi yang relevan untuk proyek Anda
-                    dengan mudah dan cepat
-                  </p>
+                  <img src="src/assets/icons/icon-upload.svg" alt="Upload icon" className="mb-2" />
+                  <p className="text-white text-center">Unggah berbagai informasi yang relevan untuk proyek Anda dengan mudah dan cepat</p>
                   <input
                     type="file"
                     name="data_path"
@@ -316,19 +178,11 @@ if (error) {
                     <p className="ml-2 mb-2">KOTA JAKARTA PUSAT</p>
                     <p className="ml-2 mb-2">KEMAYORAN</p>
                     <hr className="my-4 border-t border-white" />
-                    <p className="ml-2">
-                      Jl. Benyamin Sueb, RT.13/RW.7, Gn. Sahari Utara, Kecamatan
-                      Sawah Besar, Jkt Utara, Daerah Khusus Ibukota Jakarta
-                      10720
-                    </p>
+                    <p className="ml-2">Jl. Benyamin Sueb, RT.13/RW.7, Gn. Sahari Utara, Kecamatan Sawah Besar, Jkt Utara, Daerah Khusus Ibukota Jakarta 10720</p>
                   </div>
                   <div className="flex items-center">
                     <button className="bg-transparent border-none mb-20">
-                      <img
-                        src="src/assets/icons/icon-bahasa.svg"
-                        alt="icon"
-                        style={{ transform: "rotate(270deg)" }}
-                      />
+                      <img src="src/assets/icons/icon-bahasa.svg" alt="icon" style={{ transform: "rotate(270deg)" }} />
                     </button>
                   </div>
                 </div>
@@ -365,9 +219,7 @@ if (error) {
               <div className="mt-">
                 <h4 className="text-lg font-semibold mb-3">Pendanaan</h4>
                 <div className="mb-4">
-                  <label className="block text-sm font-semibold mb-4">
-                    Jumlah Dana
-                  </label>
+                  <label className="block text-sm font-semibold mb-4">Jumlah Dana</label>
                   <input
                     type="text"
                     className="mt-1 block w-full rounded-md border-black shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
@@ -378,9 +230,7 @@ if (error) {
                 </div>
               </div>
               <div className="mt-3">
-                <h4 className="text-lg font-semibold mb-3">
-                  Pendanaan Lainnya
-                </h4>
+                <h4 className="text-lg font-semibold mb-3">Pendanaan Lainnya</h4>
                 <div className="mb-4">
                   <label className="block text-sm mb-4">Jenis Dana</label>
                   <select
@@ -403,66 +253,24 @@ if (error) {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="mb-4">
-                  <label className="block text-sm mb-4">SDG</label>
-                  <select
-                    className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                    name="sdg"
-                    value={formData.sdg}
-                    onChange={handleChange}
-                  >
-                    <option value="" disabled>
-                      Pilih SDG
-                    </option>
-                    {sdgs.map((sdg) => (
-                      <option key={sdg.id} value={sdg.id}>
-                        {sdg.name}
-                      </option>
+              </div>
+              <div className="mb-8">
+                <h4 className="text-lg font-semibold mb-2">Kategori SDGs, Indicators dan Metrics</h4>
+                <div className="bg-white rounded-2xl p-3 outline outline-[#A1A1A1] mb-4">
+                  <div className="flex flex-wrap gap-2">
+                    {tags.map((item, index) => (
+                      <div key={index} className="bg-[#2A64F6] text-white rounded-2xl p-3 px-4 flex items-center">
+                        <span>{item}</span>
+                        <button className="ml-2 text-white">x</button>
+                      </div>
                     ))}
-                  </select>
+                    <Link to="/SdgS">
+                    <button className="bg-transparent border border-[#2A64F6] text-[#2A64F6] rounded-2xl p-3 px-4 flex items-center">
+                      Pilih SDG, Indicator, Metric
+                    </button>
+                    </Link>
+                  </div>
                 </div>
-                <div className="mb-4">
-                  <label className="block text-sm mb-4">Indikator</label>
-                  <select
-                    className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                    name="indikator"
-                    value={formData.indikator}
-                    onChange={handleChange}
-                  >
-                    <option value="" disabled>
-                      Pilih Indikator
-                    </option>
-                    {filteredIndicators.map((indicator) => (
-                      <option key={indicator.id} value={indicator.id}>
-                        {indicator.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="mb-4">
-                  <label className="block text-sm mb-4">Matrik</label>
-                  <select
-                    className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                    name="matrik"
-                    value={formData.matrik}
-                    onChange={handleChange}
-                  >
-                    <option value="" disabled>
-                      Pilih Matrik
-                    </option>
-                    {metrics.map((metric) => (
-                      <option key={metric.id} value={metric.id}>
-                        {metric.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <button
-                  style={{ textAlign: "center" }}
-                  className="mt-1 block w-full h-10 rounded-md bg-[#7198F9] border-[#7198F9] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-white"
-                >
-                  Klik untuk Pilih SDG, Indicator & Metric
-                </button>
               </div>
               <div>
                 <h3 className="font-bold pt-2 text-xl mb-5">Maps</h3>
@@ -490,3 +298,4 @@ if (error) {
 };
 
 export default FormCreate;
+
