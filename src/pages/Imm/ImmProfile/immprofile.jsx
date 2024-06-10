@@ -1,6 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const ImmProfile = () => {
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+      };
     return (
         <div className='mx-auto max-w-7xl items-center lg:px-8'>
             <div>
@@ -54,7 +60,7 @@ export const ImmProfile = () => {
                     </div>
                     <div className="bg-white rounded-lg mt-4 p-2 border border-black flex items-center" style={{ maxWidth: '100px' }}>
                         <p className="text-black text-lg font-semibold mr-2">Exit</p>
-                        <img src="src/assets/icons/icon-exit.svg" alt="Exit" className="h-6 w-6 ml-4" />
+                        <img onClick={handleLogout} src="src/assets/icons/icon-exit.svg" alt="Exit" className="h-6 w-6 ml-4" />
                     </div>
                 </div>
             </div>
