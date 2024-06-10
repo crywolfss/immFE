@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
 export const FormCreate = () => {
   const [formData, setFormData] = useState({
-    tags: "",
     judul: "",
     deskripsi: "",
     tujuan: "",
@@ -23,7 +22,20 @@ export const FormCreate = () => {
     matrik: "",
   });
 
-  const [tags, setTags] = useState(["No Poverty - 1.1 & 1.2", "Zero Hunger - 2.1", "Metric 1 & 5"]);
+  const [tags, setTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  useEffect(() => {
+    const fetchTags = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/tag");
+        setTags(response.data);
+      } catch (error) {
+        console.error("Error fetching tags:", error);
+      }
+    };
+    fetchTags();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -34,12 +46,36 @@ export const FormCreate = () => {
     }
   };
 
+  const handleTagSelect = (e) => {
+    const selectedTagId = e.target.value;
+    if (!selectedTags.includes(selectedTagId)) {
+      setSelectedTags([...selectedTags, selectedTagId]);
+    }
+  };
+
+  const removeSelectedTag = (tagId) => {
+    setSelectedTags(selectedTags.filter(tag => tag !== tagId));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
     Object.keys(formData).forEach((key) => {
-      data.append(key, formData[key]);
+      if (key === 'data_path') {
+        data.append(key, formData[key]);
+      } else {
+        data.append(key, formData[key]);
+      }
     });
+    data.append('tags', JSON.stringify(selectedTags));
+
+    // Debugging: Log formData and selectedTags
+    console.log("formData:", formData);
+    console.log("selectedTags:", selectedTags);
+    console.log("FormData object entries:");
+    for (let pair of data.entries()) {
+      console.log(pair[0]+ ', ' + pair[1]);
+    }
 
     try {
       const response = await axios.post(
@@ -69,11 +105,13 @@ export const FormCreate = () => {
             <div className="bg-white rounded-2xl p-3 w-full outline outline-[#A1A1A1] mb-4">
               <select
                 className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                name="matrik"
-                value={formData.tags}
-                onChange={handleChange}
+                name="tags"
+                onChange={handleTagSelect}
               >
                 <option value="" disabled>Pilih Tag</option>
+                {tags.map((tag, index) => (
+                  <option key={index} value={tag.id}>{tag.nama}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -119,7 +157,8 @@ export const FormCreate = () => {
                       type="text"
                       className="mt-1 block w-280 rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                       style={{ color: "#808080" }}
-                      value="Umur"
+                      name="targetPelanggan"
+                      value={formData.targetPelanggan}
                       onChange={handleChange}
                     />
                     <select
@@ -128,7 +167,9 @@ export const FormCreate = () => {
                       value={formData.kategori}
                       onChange={handleChange}
                     >
-                      <option>Jenis Pekerjaan</option>
+                      <option value="">Pilih Kategori</option>
+                      <option value="Jenis Pekerjaan">Jenis Pekerjaan</option>
+                      <option value="Umur">Umur</option>
                     </select>
                   </div>
                 </div>
@@ -240,7 +281,9 @@ export const FormCreate = () => {
                     value={formData.jenis_dana}
                     onChange={handleChange}
                   >
-                    <option>Hibah</option>
+                    <option value="Hibah">Hibah</option>
+                    <option value="Pinjaman">Pinjaman</option>
+                    <option value="Investasi">Investasi</option>
                   </select>
                 </div>
                 <div className="mb-4">
@@ -258,16 +301,16 @@ export const FormCreate = () => {
                 <h4 className="text-lg font-semibold mb-2">Kategori SDGs, Indicators dan Metrics</h4>
                 <div className="bg-white rounded-2xl p-3 outline outline-[#A1A1A1] mb-4">
                   <div className="flex flex-wrap gap-2">
-                    {tags.map((item, index) => (
+                    {selectedTags.map((item, index) => (
                       <div key={index} className="bg-[#2A64F6] text-white rounded-2xl p-3 px-4 flex items-center">
-                        <span>{item}</span>
-                        <button className="ml-2 text-white">x</button>
+                        <span>{tags.find(tag => tag.id === item)?.nama}</span>
+                        <button className="ml-2 text-white" onClick={() => removeSelectedTag(item)}>x</button>
                       </div>
                     ))}
                     <Link to="/SdgS">
-                    <button className="bg-transparent border border-[#2A64F6] text-[#2A64F6] rounded-2xl p-3 px-4 flex items-center">
-                      Pilih SDG, Indicator, Metric
-                    </button>
+                      <button className="bg-transparent border border-[#2A64F6] text-[#2A64F6] rounded-2xl p-3 px-4 flex items-center">
+                        Pilih SDG, Indicator, Metric
+                      </button>
                     </Link>
                   </div>
                 </div>
@@ -279,15 +322,15 @@ export const FormCreate = () => {
                   alt="maps"
                   style={{ width: "100%" }}
                 />
-                <Link to="/imm-create">
-                <div className="flex justify-center mt-10">
-                  <button
-                    type="submit"
-                    className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">
-                    Simpan dan Lanjutkan
-                  </button>
-                </div>
-                </Link>
+               
+                  <div className="flex justify-center mt-10">
+                    <button
+                      type="submit"
+                      className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">
+                      Simpan dan Lanjutkan
+                    </button>
+                  </div>
+                
               </div>
             </div>
           </div>
@@ -299,4 +342,3 @@ export const FormCreate = () => {
 };
 
 export default FormCreate;
-
