@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -6,6 +6,46 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 const ImmNavbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeButton, setActiveButton] = useState('');
+    const [companyName, setCompanyName] = useState('');
+
+    useEffect(() => {
+        const fetchCompanyName = async () => {
+            const token = localStorage.getItem('token'); // Assuming the token is stored in local storage with key 'token'
+            const userId = localStorage.getItem('id');
+            if (!token) {
+                console.error('Token not found');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/company', { // Assuming the endpoint is specific to the user
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to fetch company name');
+                }
+                const data = await response.json();
+                console.log(data.user_id);
+                // Filter the data based on the user ID
+                const userCompanies = data.filter(company => company.user_id === parseInt(userId));
+                console.log(userCompanies);
+                if (userCompanies.length > 0) {
+                    // You can concatenate the company names if there are multiple companies
+                    const companyNames = userCompanies.map(company => company.nama_perusahaan).join(', ');
+                    setCompanyName(companyNames);
+                } else {
+                    console.error('No company found for the user');
+                }
+
+            } catch (error) {
+                console.error('Error fetching company name:', error);
+            }
+        };
+
+        fetchCompanyName();
+    }, []);
 
     const handleSetActiveButton = (buttonName) => {
         setActiveButton(buttonName);
@@ -69,7 +109,7 @@ const ImmNavbar = () => {
                     <div className="h-10 w-10 bg-gray-100 rounded-full float-right mr-3">
                         <img src="src/assets/persons/person-1.jpg" alt="Profile" className="h-full w-full rounded-full object-cover" />
                     </div>
-                    <span className="text-black font-semibold mr-4">COMPANY NAME</span>
+                    <span className="text-black font-semibold mr-4">{companyName}</span>
                     <img src="src/assets/icons/icon-down.svg" alt="dropdown" className="h-4 w-4 ml-auto" />
                 </div>
                 <div className="flex lg:hidden">

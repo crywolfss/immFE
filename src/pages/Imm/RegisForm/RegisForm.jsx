@@ -39,6 +39,7 @@ export const RegisForm = () => {
           }));
           console.log(response.data);
           console.log(response.data[0].nik);
+          localStorage.setItem("id", response.data[0].id);
         } catch (error) {
           console.error('Error fetching user ID:', error);
         }
