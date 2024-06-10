@@ -20,21 +20,11 @@ export const FormUpdate = () => {
                 <div className="flex flex-col lg:flex-row">
                     <div className="w-full lg:w-2/3 lg:pr-8">
                         <p className='text-lg font-semibold mb-2' style={{ fontSize: '17px' }}>Perbarui Laporan</p>
-                        <p className='text-s font-semibold mb-2 ml-6'>Pilihlah Tag yang sesuai</p>
-                        <div className="bg-white rounded-2xl p-3 outline outline-[#A1A1A1] mb-4 ml-6">
-                            <div className="flex space-x-2">
-                                {['Tinjauan Triwulanan', 'Pengurangan Emisi'].map((card, index) => (
-                                    <div key={index} className="bg-[#2A64F6] text-white rounded-2xl p-3 px-4 flex items-center">
-                                        <span>{card}</span>
-                                        <button className="ml-2 text-white">x</button>
-                                    </div>
-                                ))}
-                                {showUpdateTagButton && (
-                                    <button className="bg-transparent border border-[#2A64F6] text-[#2A64F6] rounded-2xl p-3 px-4 flex items-center">
-                                        Update Tag
-                                    </button>
-                                )}
-                            </div>
+                        <div className="mb-4 ml-6">
+                            <label htmlFor="tag-dropdown" className="block text-md font-semibold mb-2">Pilihlah Tag yang sesuai</label>
+                            <select id="tag-dropdown" className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+                            <option value="" disabled>Pilih Tag</option>
+                            </select>
                         </div>
                         <div className='mb-2'>
                             <h4 className='text-lg font-semibold mb-2'>Upload Impact</h4>
@@ -65,21 +55,30 @@ export const FormUpdate = () => {
                                     <p className='font-semibold text-justify'>Anda dapat melihat kemajuan proyek Anda saat ini yang tercatat pada progress bar dengan status 40%. Kelola dan prioritaskan proyek sesuai dengan kemajuan dan sasaran Anda untuk efisiensi yang lebih baik.</p>
                                 </div>
                             </div>
-                        </div>
-                        <div className='mb-8 mt-4'>
-                            <h4 className='text-lg font-semibold mb-2'>Alamat</h4>
-                            <div className='bg-[#7198F9] p-6 rounded-md text-white flex items-center justify-between'>
-                                <div>
-                                    <p className='ml-2 mb-2'>DKI JAKARTA</p>
-                                    <p className='ml-2 mb-2'>KOTA JAKARTA PUSAT</p>
-                                    <p className='ml-2 mb-2'>KEMAYORAN</p>
-                                    <hr className="my-4 border-t border-white" />
-                                    <p className='ml-2'>Jl. Benyamin Sueb, RT.13/RW.7, Gn. Sahari Utara, Kecamatan Sawah Besar, Jkt Utara, Daerah Khusus Ibukota Jakarta 10720</p>
-                                </div>
-                                <div className="flex items-center">
-                                    <button className="bg-transparent border-none mb-20">
-                                        <img src="src/assets/icons/icon-bahasa.svg" alt="icon" style={{ transform: 'rotate(270deg)' }} />
-                                    </button>
+                            <div className='mt-8'>
+                                <h4 className='text-lg font-semibold mb-2'>Alamat</h4>
+                                <div className='bg-[#7198F9] p-6 rounded-md text-white' style={{ maxWidth: '750px' }}>
+                                    <div className="mb-4">
+                                        <label className="block text-md font-semibold mb-2">Negara</label>
+                                        <select className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+                                            <option value="" disabled>Pilih Negara</option>
+                                            {/* Add your country options here */}
+                                        </select>
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block text-md font-semibold mb-2">Provinsi</label>
+                                        <select className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+                                            <option value="" disabled>Pilih Provinsi</option>
+                                            {/* Add your province options here */}
+                                        </select>
+                                    </div>
+                                    <div className="mb-4">
+                                        <label className="block text-md font-semibold mb-2">Kota</label>
+                                        <select className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+                                            <option value="" disabled>Pilih Kota</option>
+                                            {/* Add your city options here */}
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -88,18 +87,26 @@ export const FormUpdate = () => {
                         <div className='mb-4 mt-2'>
                             <label className='block text-sm mb-4 ml-5'>Kategori SDGs, Indicators dan Metrics</label>
                             <div className="bg-white rounded-2xl p-3 outline outline-[#A1A1A1] mb-4 ml-6">
-                                <div className="flex flex-wrap gap-2">
-                                    {['No Poverty - 1.1 & 1.2', 'Zero Hunger - 2.1', 'Metric 1 & 5'].map((item, index) => (
-                                        <div key={index} className="bg-[#2A64F6] text-white rounded-2xl p-3 px-4 flex items-center">
-                                            <span>{item}</span>
-                                            <button className="ml-2 text-white">x</button>
-                                        </div>
-                                    ))}
-                                    {showUpdateSDGButton && (
-                                        <button className="bg-transparent border border-[#2A64F6] text-[#2A64F6] rounded-2xl p-3 px-4 flex items-center">
-                                            Update SDG, Indicator, Metric
-                                        </button>
-                                    )}
+                                <div className="mb-4">
+                                    <label className="block text-md font-semibold mb-2">SDG</label>
+                                    <select className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+                                        <option value="" disabled>Pilih SDG</option>
+                                        {/* Add your SDG options here */}
+                                    </select>
+                                </div>
+                                <div className="mb-4">
+                                    <label className="block text-md font-semibold mb-2">Indicator</label>
+                                    <select className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+                                        <option value="" disabled>Pilih Indicator</option>
+                                        {/* Add your Indicator options here */}
+                                    </select>
+                                </div>
+                                <div className="mb-4">
+                                    <label className="block text-md font-semibold mb-2">Metric</label>
+                                    <select className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+                                        <option value="" disabled>Pilih Metric</option>
+                                        {/* Add your Metric options here */}
+                                    </select>
                                 </div>
                             </div>
                         </div>
