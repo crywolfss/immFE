@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export const FormUpdate = () => {
+    const [showUpdateTagButton, setShowUpdateTagButton] = useState(false);
+    const [showUpdateSDGButton, setShowUpdateSDGButton] = useState(false);
+
+    const handleUpdateReport = () => {
+        setShowUpdateTagButton(true);
+        setShowUpdateSDGButton(true);
+    };
+
     return (
         <div className='mx-auto max-w-7xl lg:px-8'>
             <div className="flex flex-col">
@@ -20,9 +29,11 @@ export const FormUpdate = () => {
                                         <button className="ml-2 text-white">x</button>
                                     </div>
                                 ))}
-                                <button className="bg-transparent border border-[#2A64F6] text-[#2A64F6] rounded-2xl p-3 px-4 flex items-center">
-                                    Update Tag
-                                </button>
+                                {showUpdateTagButton && (
+                                    <button className="bg-transparent border border-[#2A64F6] text-[#2A64F6] rounded-2xl p-3 px-4 flex items-center">
+                                        Update Tag
+                                    </button>
+                                )}
                             </div>
                         </div>
                         <div className='mb-2'>
@@ -49,7 +60,7 @@ export const FormUpdate = () => {
                                 <label className='block text-md font-semibold ml-5'>Bilah Kemajuan</label>
                             </div>
                             <div className="flex items-center">
-                                <img src='src/assets/images/progress.svg' alt="Progress" className="h-16 w-16" />
+                                <img src='/mnt/data/image.png' alt="Progress" className="h-16 w-16" />
                                 <div className="ml-5">
                                     <p className='font-semibold text-justify'>Anda dapat melihat kemajuan proyek Anda saat ini yang tercatat pada progress bar dengan status 40%. Kelola dan prioritaskan proyek sesuai dengan kemajuan dan sasaran Anda untuk efisiensi yang lebih baik.</p>
                                 </div>
@@ -84,9 +95,11 @@ export const FormUpdate = () => {
                                             <button className="ml-2 text-white">x</button>
                                         </div>
                                     ))}
-                                    <button className="bg-transparent border border-[#2A64F6] text-[#2A64F6] rounded-2xl p-3 px-4 flex items-center">
-                                        Update SDG, Indicator, Metric
-                                    </button>
+                                    {showUpdateSDGButton && (
+                                        <button className="bg-transparent border border-[#2A64F6] text-[#2A64F6] rounded-2xl p-3 px-4 flex items-center">
+                                            Update SDG, Indicator, Metric
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -164,11 +177,14 @@ export const FormUpdate = () => {
                     <h3 className='font-bold pt-2 text-xl mb-5'>Maps</h3>
                     <img src="src/assets/images/maps.svg" alt="maps" style={{ width: '100%' }} />
                     <div className="flex justify-center mt-10">
-                        <button className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">Perbarui Laporan</button>
+                        <button className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl" onClick={handleUpdateReport}>Perbarui Laporan</button>
                     </div>
+                    <Link to="/imm-create">
                     <div className="flex justify-center mt-10">
                         <button className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">Simpan dan Lanjutkan</button>
-                    </div>
+                    </div>   
+                    </Link>
+
                 </div>
                 <div style={{ height: '75px' }}></div>
             </div>
