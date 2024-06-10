@@ -60,7 +60,7 @@ export const FormUpdate = () => {
                                 <label className='block text-md font-semibold ml-5'>Bilah Kemajuan</label>
                             </div>
                             <div className="flex items-center">
-                                <img src='/mnt/data/image.png' alt="Progress" className="h-16 w-16" />
+                                <img src="src/assets/images/progress.svg" alt="Progress" className="h-16 w-16" />
                                 <div className="ml-5">
                                     <p className='font-semibold text-justify'>Anda dapat melihat kemajuan proyek Anda saat ini yang tercatat pada progress bar dengan status 40%. Kelola dan prioritaskan proyek sesuai dengan kemajuan dan sasaran Anda untuk efisiensi yang lebih baik.</p>
                                 </div>

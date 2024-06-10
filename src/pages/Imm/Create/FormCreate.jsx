@@ -279,14 +279,15 @@ export const FormCreate = () => {
                   alt="maps"
                   style={{ width: "100%" }}
                 />
+                <Link to="/imm-create">
                 <div className="flex justify-center mt-10">
                   <button
                     type="submit"
-                    className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl"
-                  >
+                    className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">
                     Simpan dan Lanjutkan
                   </button>
                 </div>
+                </Link>
               </div>
             </div>
           </div>

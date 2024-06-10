@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export const SdgS = () => {
     const [sdgData, setSdgData] = useState([]);
@@ -93,14 +94,15 @@ export const SdgS = () => {
                     </div>
                 ))}
             </div>
+            <Link to="/Matrics">
             <div className="text-center mt-10">
                 <button 
                     onClick={handleSave} 
-                    className="custom-button"
-                >
+                    className="custom-button">
                     Simpan
                 </button>
             </div>
+            </Link>
             <style jsx>{`
                 .custom-button {
                     background-color: #2D6AE0;
