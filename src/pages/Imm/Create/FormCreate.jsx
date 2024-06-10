@@ -1,29 +1,37 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
 
 export const FormCreate = () => {
   const [formData, setFormData] = useState({
+    user_id: "", // Ensure this is set correctly based on your application context
+    tag_id: "", // Ensure this is set correctly based on your application context
     judul: "",
     deskripsi: "",
     tujuan: "",
     tanggalMulai: "",
     tanggalSelesai: "",
-    negara: "",
-    provinsi: "",
-    kota: "",
+    negara_id: "",
+    provinsi_id: "",
+    kota_id: "",
     data_path: null,
     kategori: "",
     dana: "",
     jenis_dana: "",
     dana_lain: "",
-    sdg: "",
-    indikator: "",
-    matrik: "",
+    sdg_id: "",
+    indikator_id: "",
+    matrik_id: "",
+    targetPelanggan: "",
   });
 
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [provinces, setProvinces] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [sdgs, setSdgs] = useState([]);
+  const [indicators, setIndicators] = useState([]);
+  const [metrics, setMetrics] = useState([]);
 
   useEffect(() => {
     const fetchTags = async () => {
@@ -37,6 +45,109 @@ export const FormCreate = () => {
     fetchTags();
   }, []);
 
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/get-countries");
+        setCountries(response.data);
+      } catch (error) {
+        console.error("Error fetching countries:", error);
+      }
+    };
+    fetchCountries();
+  }, []);
+
+  useEffect(() => {
+    const fetchSdgs = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/get-sdg");
+        setSdgs(response.data);
+      } catch (error) {
+        console.error("Error fetching SDGs:", error);
+      }
+    };
+    fetchSdgs();
+  }, []);
+
+  useEffect(() => {
+    const fetchUserId = async () => {
+      const storedEmail = localStorage.getItem('email');
+      if (storedEmail) {
+        try {
+          const response = await axios.get(`http://127.0.0.1:8000/api/user/${storedEmail}`);
+          setFormData(prevFormData => ({
+            ...prevFormData,
+            user_id: response.data[0].id
+          }));
+          console.log(response.data);
+          console.log(response.data[0].nik);
+          localStorage.setItem("id", response.data[0].id);
+        } catch (error) {
+          console.error('Error fetching user ID:', error);
+        }
+      }
+    };
+    fetchUserId();
+  }, []);
+
+  const handleCountryChange = async (e) => {
+    const selectedCountry = e.target.value;
+    setFormData({ ...formData, negara_id: selectedCountry, provinsi_id: "", kota_id: "" });
+
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/get-regions/${selectedCountry}`);
+      setProvinces(response.data);
+      setCities([]);
+    } catch (error) {
+      console.error("Error fetching regions:", error);
+    }
+  };
+
+  const handleProvinceChange = async (e) => {
+    const selectedProvince = e.target.value;
+    setFormData({ ...formData, provinsi_id: selectedProvince, kota_id: "" });
+
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/get-cities/${selectedProvince}`);
+      setCities(response.data);
+    } catch (error) {
+      console.error("Error fetching cities:", error);
+    }
+  };
+
+  const handleCityChange = (e) => {
+    setFormData({ ...formData, kota_id: e.target.value });
+  };
+
+  const handleSdgChange = async (e) => {
+    const selectedSdg = e.target.value;
+    setFormData({ ...formData, sdg_id: selectedSdg, indikator_id: "", matrik_id: "" });
+
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/get-indicators/${selectedSdg}`);
+      setIndicators(response.data);
+      setMetrics([]);
+    } catch (error) {
+      console.error("Error fetching indicators:", error);
+    }
+  };
+
+  const handleIndicatorChange = async (e) => {
+    const selectedIndicator = e.target.value;
+    setFormData({ ...formData, indikator_id: selectedIndicator, matrik_id: "" });
+
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/get-metrics/${selectedIndicator}`);
+      setMetrics(response.data);
+    } catch (error) {
+      console.error("Error fetching metrics:", error);
+    }
+  };
+
+  const handleMetricChange = (e) => {
+    setFormData({ ...formData, matrik_id: e.target.value });
+  };
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (files) {
@@ -47,10 +158,7 @@ export const FormCreate = () => {
   };
 
   const handleTagSelect = (e) => {
-    const selectedTagId = e.target.value;
-    if (!selectedTags.includes(selectedTagId)) {
-      setSelectedTags([...selectedTags, selectedTagId]);
-    }
+    setFormData({ ...formData, tag_id: e.target.value });
   };
 
   const removeSelectedTag = (tagId) => {
@@ -60,26 +168,27 @@ export const FormCreate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
+    
+    // Logging the formData before appending to FormData object
+    console.log("Form Data:", formData);
+    
     Object.keys(formData).forEach((key) => {
-      if (key === 'data_path') {
-        data.append(key, formData[key]);
-      } else {
-        data.append(key, formData[key]);
-      }
+      data.append(key, formData[key]);
     });
-    data.append('tags', JSON.stringify(selectedTags));
 
-    // Debugging: Log formData and selectedTags
-    console.log("formData:", formData);
-    console.log("selectedTags:", selectedTags);
-    console.log("FormData object entries:");
+    // Append each tag as a separate form field
+    selectedTags.forEach((tag, index) => {
+      data.append(`tag_id[${index}]`, tag);  // Adjust to match backend expectation
+    });
+
+    // Logging FormData content
     for (let pair of data.entries()) {
-      console.log(pair[0]+ ', ' + pair[1]);
+      console.log(pair[0] + ', ' + pair[1]); 
     }
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/projects",
+        "http://127.0.0.1:8000/api/add-project",
         data,
         {
           headers: {
@@ -90,7 +199,17 @@ export const FormCreate = () => {
       console.log("Project created successfully:", response.data);
       // Handle success (e.g., redirect or show success message)
     } catch (error) {
-      console.error("Error creating project:", error);
+      // Log the error response for debugging
+      if (error.response) {
+        console.error("Error response:", error.response);
+        console.error("Error data:", error.response.data);
+        console.error("Error status:", error.response.status);
+        console.error("Error headers:", error.response.headers);
+      } else if (error.request) {
+        console.error("Error request:", error.request);
+      } else {
+        console.error("General error:", error.message);
+      }
       // Handle error (e.g., show error message)
     }
   };
@@ -106,6 +225,7 @@ export const FormCreate = () => {
               <select
                 className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                 name="tags"
+                value={formData.tag_id}
                 onChange={handleTagSelect}
               >
                 <option value="" disabled>Pilih Tag</option>
@@ -155,22 +275,12 @@ export const FormCreate = () => {
                   <div className="flex space-x-4">
                     <input
                       type="text"
-                      className="mt-1 block w-280 rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                       style={{ color: "#808080" }}
                       name="targetPelanggan"
                       value={formData.targetPelanggan}
                       onChange={handleChange}
                     />
-                    <select
-                      className="mt-1 w-280 rounded-md border-[#808080] bg-[#FFFFFF] text-grey"
-                      name="kategori"
-                      value={formData.kategori}
-                      onChange={handleChange}
-                    >
-                      <option value="">Pilih Kategori</option>
-                      <option value="Jenis Pekerjaan">Jenis Pekerjaan</option>
-                      <option value="Umur">Umur</option>
-                    </select>
                   </div>
                 </div>
                 <div className="mb-2">
@@ -178,7 +288,7 @@ export const FormCreate = () => {
                   <div className="flex space-x-4">
                     <input
                       type="date"
-                      className="mt-1 rounded-md border-[#7198F9] bg-[#7198F9] text-white"
+                      className="mt-1 rounded-md border-[#7198F9] bg-[#7198F9] text-white w-full"
                       name="tanggalMulai"
                       value={formData.tanggalMulai}
                       onChange={handleChange}
@@ -190,7 +300,7 @@ export const FormCreate = () => {
                   <div className="flex space-x-4">
                     <input
                       type="date"
-                      className="mt-1 rounded-md border-[#7198F9] bg-[#7198F9] text-white"
+                      className="mt-1 rounded-md border-[#7198F9] bg-[#7198F9] text-white w-full"
                       name="tanggalSelesai"
                       value={formData.tanggalSelesai}
                       onChange={handleChange}
@@ -213,18 +323,48 @@ export const FormCreate = () => {
               </div>
               <div className="mb-8">
                 <h4 className="text-lg font-semibold mb-2">Alamat</h4>
-                <div className="bg-[#7198F9] p-6 rounded-md text-white flex items-center justify-between">
-                  <div>
-                    <p className="ml-2 mb-2">DKI JAKARTA</p>
-                    <p className="ml-2 mb-2">KOTA JAKARTA PUSAT</p>
-                    <p className="ml-2 mb-2">KEMAYORAN</p>
-                    <hr className="my-4 border-t border-white" />
-                    <p className="ml-2">Jl. Benyamin Sueb, RT.13/RW.7, Gn. Sahari Utara, Kecamatan Sawah Besar, Jkt Utara, Daerah Khusus Ibukota Jakarta 10720</p>
+                <div className="bg-[#7198F9] p-6 rounded-md text-black flex flex-col">
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-2">Negara</label>
+                    <select
+                      className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      name="negara_id"
+                      value={formData.negara_id}
+                      onChange={handleCountryChange}
+                    >
+                      <option value="">Pilih Negara</option>
+                      {countries.map((country, index) => (
+                        <option key={index} value={country.id}>{country.name}</option>
+                      ))}
+                    </select>
                   </div>
-                  <div className="flex items-center">
-                    <button className="bg-transparent border-none mb-20">
-                      <img src="src/assets/icons/icon-bahasa.svg" alt="icon" style={{ transform: "rotate(270deg)" }} />
-                    </button>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-2">Provinsi</label>
+                    <select
+                      className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      name="provinsi_id"
+                      value={formData.provinsi_id}
+                      onChange={handleProvinceChange}
+                    >
+                      <option value="">Pilih Provinsi</option>
+                      {provinces.map((province, index) => (
+                        <option key={index} value={province.id}>{province.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-2">Kota</label>
+                    <select
+                      className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      name="kota_id"
+                      value={formData.kota_id}
+                      onChange={handleCityChange}
+                    >
+                      <option value="">Pilih Kota</option>
+                      {cities.map((city, index) => (
+                        <option key={index} value={city.id}>{city.name}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
               </div>
@@ -300,18 +440,47 @@ export const FormCreate = () => {
               <div className="mb-8">
                 <h4 className="text-lg font-semibold mb-2">Kategori SDGs, Indicators dan Metrics</h4>
                 <div className="bg-white rounded-2xl p-3 outline outline-[#A1A1A1] mb-4">
-                  <div className="flex flex-wrap gap-2">
-                    {selectedTags.map((item, index) => (
-                      <div key={index} className="bg-[#2A64F6] text-white rounded-2xl p-3 px-4 flex items-center">
-                        <span>{tags.find(tag => tag.id === item)?.nama}</span>
-                        <button className="ml-2 text-white" onClick={() => removeSelectedTag(item)}>x</button>
-                      </div>
-                    ))}
-                    <Link to="/SdgS">
-                      <button className="bg-transparent border border-[#2A64F6] text-[#2A64F6] rounded-2xl p-3 px-4 flex items-center">
-                        Pilih SDG, Indicator, Metric
-                      </button>
-                    </Link>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-2">SDG</label>
+                    <select
+                      className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      name="sdg_id"
+                      value={formData.sdg_id}
+                      onChange={handleSdgChange}
+                    >
+                      <option value="">Pilih SDG</option>
+                      {sdgs.map((sdg, index) => (
+                        <option key={index} value={sdg.id}>{sdg.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-2">Indicator</label>
+                    <select
+                      className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      name="indikator_id"
+                      value={formData.indikator_id}
+                      onChange={handleIndicatorChange}
+                    >
+                      <option value="">Pilih Indicator</option>
+                      {indicators.map((indicator, index) => (
+                        <option key={index} value={indicator.id}>{indicator.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-2">Metric</label>
+                    <select
+                      className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      name="matrik_id"
+                      value={formData.matrik_id}
+                      onChange={handleMetricChange}
+                    >
+                      <option value="">Pilih Metric</option>
+                      {metrics.map((metric, index) => (
+                        <option key={index} value={metric.id}>{metric.name}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
               </div>
@@ -322,15 +491,13 @@ export const FormCreate = () => {
                   alt="maps"
                   style={{ width: "100%" }}
                 />
-               
-                  <div className="flex justify-center mt-10">
-                    <button
-                      type="submit"
-                      className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">
-                      Simpan dan Lanjutkan
-                    </button>
-                  </div>
-                
+                <div className="flex justify-center mt-10">
+                  <button
+                    type="submit"
+                    className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">
+                    Simpan dan Lanjutkan
+                  </button>
+                </div>
               </div>
             </div>
           </div>
