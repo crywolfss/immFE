@@ -29,23 +29,17 @@ export const ImmCreate = () => {
                                 <p className="text-white font-semibold px-3 py-24" style={{ marginRight: '8px' }}>Kategori : Bisnis Yang Sudah Ada</p>
                                 <img src="src/assets/icons/icon-time.svg" alt="icon" className="mr-2 ml-2" style={{ width: '16px', height: '16px' }} />
                                 <p className="text-white font-semibold py-24">Mei 24</p>
+                                <Link to="/form-update">
                                 <img src="src/assets/icons/icon-panah.svg" alt="open" style={{marginLeft: '150px', marginBottom: '12px'}}  />
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="mt-6 flex">
-                    <Link to="/form-create" className="rounded-full bg-blue-600 flex-grow relative" style={{ width: '140px', height: '50px', marginRight: '20px' }}>
-                        <div className="text-white font-semibold flex items-center justify-center h-full">
-                            <img src="src/assets/icons/icon-plus.svg" alt="icon" className="mr-2" style={{ width: '16px', height: '16px' }} />
-                            <p>Buat Projek</p>
-                        </div>
-                    </Link>
-                    <Link to="/form-update" className="rounded-full bg-blue-600 flex-grow relative" style={{ width: '160px', height: '50px', marginLeft: '20px'}}>
-                        <div className="text-white font-semibold flex items-center justify-center h-full">
-                            <img src="src/assets/icons/icon-update.svg" alt="icon" className="mr-2" style={{ width: '16px', height: '16px' }} />
-                            <p>Perbarui Laporan</p>
-                        </div>
+                <div className="mt-6 flex justify-center">
+                    <Link to="/form-create" className="rounded-full bg-blue-600 flex items-center justify-center" style={{ width: '200px', height: '60px' }}>
+                        <img src="src/assets/icons/icon-plus.svg" alt="icon" className="mr-2" style={{ width: '20px', height: '20px' }} />
+                        <p className="text-white font-semibold">Buat Projek</p>
                     </Link>
                 </div>
                 <div style={{ height: '100px' }}></div>
