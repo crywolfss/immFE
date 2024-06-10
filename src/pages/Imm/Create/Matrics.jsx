@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export const Matrics = () => {
     const [selectedIndicators, setSelectedIndicators] = useState([]);
@@ -80,14 +81,15 @@ export const Matrics = () => {
                     </div>
                 ))}
             </div>
+            <Link to="/form-create">
             <div className="text-center mt-10">
                 <button
                     onClick={handleSave}
-                    className="custom-button"
-                >
+                    className="custom-button">
                     Simpan
                 </button>
             </div>
+            </Link>
             <style jsx>{`
                 .custom-button {
                     background-color: #2D6AE0;
