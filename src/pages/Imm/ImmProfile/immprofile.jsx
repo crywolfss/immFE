@@ -1,12 +1,86 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const ImmProfile = () => {
+    const [namaLengkap, setNamaLengkap] = useState('');
+    const [email, setEmail] = useState('');
+    const [companyName, setCompanyName] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const token = localStorage.getItem('token');
+            const userId = localStorage.getItem('id');
+            if (!token) {
+                console.error('Token not found');
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api/user-id/${userId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user data');
+                }
+                const data = await response.json();
+                if (data.length > 0) {
+                    setNamaLengkap(data[0].nama_lengkap);
+                    setEmail(data[0].email);
+                } else {
+                    console.error('User data not found');
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+    useEffect(() => {
+        const fetchCompanyName = async () => {
+            const token = localStorage.getItem('token');
+            const userId = localStorage.getItem('id');
+            if (!token) {
+                console.error('Token not found');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/company', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to fetch company name');
+                }
+                const data = await response.json();
+                const userCompanies = data.filter(company => company.user_id === parseInt(userId));
+                if (userCompanies.length > 0) {
+                    const companyNames = userCompanies.map(company => company.nama_perusahaan).join(', ');
+                    setCompanyName(companyNames);
+                } else {
+                    console.error('No company found for the user');
+                }
+
+            } catch (error) {
+                console.error('Error fetching company name:', error);
+            }
+        };
+
+        fetchCompanyName();
+    }, []);
+
     const handleLogout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("id");
         navigate("/login");
-      };
+    };
+
     return (
         <div className='mx-auto max-w-7xl items-center lg:px-8'>
             <div>
@@ -23,19 +97,40 @@ export const ImmProfile = () => {
                         <div className="flex ml-44 mb-2 mt-4">
                             <div className="w-full mr-2">
                                 <span className="text-sm font-semibold">Full Name</span>
-                                <input type="text" className="border border-gray-300 rounded-md px-4 py-2 w-full mt-1" placeholder="Your Full Name" style={{ width: 'calc(100% + 0.5rem)' }} />
-                            </div>
-                        </div>
-                        <div className="flex ml-44 mb-2 mt-4">
-                            <div className="w-full mr-2">
-                                <span className="text-sm font-semibold">Company Name</span>
-                                <input type="text" className="border border-gray-300 rounded-md px-4 py-2 w-full mt-1" placeholder="Your Company Name" style={{ width: 'calc(100% + 0.5rem)' }} />
+                                <input
+                                    type="text"
+                                    className="border border-gray-300 rounded-md px-4 py-2 w-full mt-1"
+                                    placeholder="Your Full Name"
+                                    value={namaLengkap}
+                                    onChange={(e) => setNamaLengkap(e.target.value)}
+                                    style={{ width: 'calc(100% + 0.5rem)' }}
+                                />
                             </div>
                         </div>
                         <div className="flex ml-44 mb-2 mt-4">
                             <div className="w-full mr-2">
                                 <span className="text-sm font-semibold">Email</span>
-                                <input type="email" className="border border-gray-300 rounded-md px-4 py-2 w-full mt-1" placeholder="imm@gmail.com" style={{ width: 'calc(100% + 0.5rem)' }} />
+                                <input
+                                    type="email"
+                                    className="border border-gray-300 rounded-md px-4 py-2 w-full mt-1"
+                                    placeholder="Your Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    style={{ width: 'calc(100% + 0.5rem)' }}
+                                />
+                            </div>
+                        </div>
+                        <div className="flex ml-44 mb-2 mt-4">
+                            <div className="w-full mr-2">
+                                <span className="text-sm font-semibold">Company Name</span>
+                                <input
+                                    type="text"
+                                    className="border border-gray-300 rounded-md px-4 py-2 w-full mt-1"
+                                    placeholder="Your Company Name"
+                                    value={companyName}
+                                    onChange={(e) => setCompanyName(e.target.value)}
+                                    style={{ width: 'calc(100% + 0.5rem)' }}
+                                />
                             </div>
                         </div>
                         <div className="flex ml-44 mb-2 mt-4">
