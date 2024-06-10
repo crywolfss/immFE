@@ -14,14 +14,10 @@ export const ImmProfile = () => {
                             </div>
                             <span className="text-m ml-4 mb-6 float-right">Change Picture</span>
                         </div>
-                        <div className="flex ml-44 mb-2">
-                            <div className="w-1/2 mr-2">
-                                <span className="text-sm font-semibold">First Name</span>
-                                <input type="text" className="border border-gray-300 rounded-md px-4 py-2 w-full mt-1" placeholder="First Name" />
-                            </div>
-                            <div className="w-1/2 ml-2">
-                                <span className="text-sm font-semibold invisible">Last Name</span>
-                                <input type="text" className="border border-gray-300 rounded-md px-4 py-2 w-full mt-1" placeholder="Last Name" />
+                        <div className="flex ml-44 mb-2 mt-4">
+                            <div className="w-full mr-2">
+                                <span className="text-sm font-semibold">Full Name</span>
+                                <input type="text" className="border border-gray-300 rounded-md px-4 py-2 w-full mt-1" placeholder="Your Full Name" style={{ width: 'calc(100% + 0.5rem)' }} />
                             </div>
                         </div>
                         <div className="flex ml-44 mb-2 mt-4">
