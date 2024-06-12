@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       { path: 'form-survey', element: <FormSurvey />},
       { path: 'imm-create', element: <ImmCreate />},
       { path: 'form-create', element: <FormCreate />},
-      { path: 'form-update', element: <FormUpdate />},
+      { path: 'form-update/:id', element: <FormUpdate />},
       { path: 'form-succes', element: <FormSuccess />},
       { path: 'forum', element: <Forum />},
       { path: 'SdgS', element: <SdgS />},
