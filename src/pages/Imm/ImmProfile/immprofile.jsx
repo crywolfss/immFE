@@ -133,12 +133,6 @@ export const ImmProfile = () => {
                                 />
                             </div>
                         </div>
-                        <div className="flex ml-44 mb-2 mt-4">
-                            <div className="w-full mr-2">
-                                <span className="text-sm font-semibold">Password</span>
-                                <input type="password" className="border border-gray-300 rounded-md px-4 py-2 w-full mt-1" placeholder="Your Password" style={{ width: 'calc(100% + 0.5rem)' }} />
-                            </div>
-                        </div>
                     </div>
                     <div className="bg-[#0F1F3E] rounded-lg mt-4 p-4 flex justify-between items-center">
                         <p className="text-white text-lg min-w-max max-w-full">General preferences for the web</p>
