@@ -19,9 +19,9 @@ export const FormCreate = () => {
     dana: "",
     jenis_dana: "",
     dana_lain: "",
-    sdg_id: "",
-    indikator_id: "",
-    matrik_id: "",
+    sdg_id: [],
+    indikator_id: [],
+    matrik_id: [],
     targetPelanggan: "",
   });
 
@@ -65,7 +65,11 @@ export const FormCreate = () => {
     const fetchSdgs = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/api/get-sdg");
-        setSdgs(response.data);
+        const sdgOptions = response.data.map(sdg => ({
+          value: sdg.id,
+          label: sdg.name
+        }));
+        setSdgs(sdgOptions);
       } catch (error) {
         console.error("Error fetching SDGs:", error);
       }
@@ -121,33 +125,42 @@ export const FormCreate = () => {
     setFormData({ ...formData, kota_id: e.target.value });
   };
 
-  const handleSdgChange = async (e) => {
-    const selectedSdg = e.target.value;
-    setFormData({ ...formData, sdg_id: selectedSdg, indikator_id: "", matrik_id: "" });
+  const handleSdgSelect = async (selectedOptions) => {
+    const selectedSdgIds = selectedOptions.map(option => option.value);
+    setFormData({ ...formData, sdg_id: selectedSdgIds, indikator_id: [], matrik_id: [] });
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/get-indicators/${selectedSdg}`);
-      setIndicators(response.data);
+      const response = await axios.get(`http://127.0.0.1:8000/api/get-indicators/${selectedSdgIds}`);
+      const indicatorOptions = response.data.map(indicator => ({
+        value: indicator.id,
+        label: indicator.name
+      }));
+      setIndicators(indicatorOptions);
       setMetrics([]);
     } catch (error) {
       console.error("Error fetching indicators:", error);
     }
   };
 
-  const handleIndicatorChange = async (e) => {
-    const selectedIndicator = e.target.value;
-    setFormData({ ...formData, indikator_id: selectedIndicator, matrik_id: "" });
+  const handleIndicatorSelect = async (selectedOptions) => {
+    const selectedIndicatorIds = selectedOptions.map(option => option.value);
+    setFormData({ ...formData, indikator_id: selectedIndicatorIds, matrik_id: [] });
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/get-metrics/${selectedIndicator}`);
-      setMetrics(response.data);
+      const response = await axios.get(`http://127.0.0.1:8000/api/get-metrics/${selectedIndicatorIds}`);
+      const metricOptions = response.data.map(metric => ({
+        value: metric.id,
+        label: metric.name
+      }));
+      setMetrics(metricOptions);
     } catch (error) {
       console.error("Error fetching metrics:", error);
     }
   };
 
-  const handleMetricChange = (e) => {
-    setFormData({ ...formData, matrik_id: e.target.value });
+  const handleMetricSelect = (selectedOptions) => {
+    const selectedMetricIds = selectedOptions.map(option => option.value);
+    setFormData({ ...formData, matrik_id: selectedMetricIds });
   };
 
   const handleChange = (e) => {
@@ -172,12 +185,13 @@ export const FormCreate = () => {
     console.log("Form Data:", formData);
     
     Object.keys(formData).forEach((key) => {
-      data.append(key, formData[key]);
-    });
-
-    // Append each tag as a separate form field
-    formData.tag_id.forEach((tagId, index) => {
-      data.append(`tag_id[${index}]`, tagId);
+      if (Array.isArray(formData[key])) {
+        formData[key].forEach((value, index) => {
+          data.append(`${key}[${index}]`, value);
+        });
+      } else {
+        data.append(key, formData[key]);
+      }
     });
 
     // Logging FormData content
@@ -437,45 +451,33 @@ export const FormCreate = () => {
                 <div className="bg-white rounded-2xl p-3 outline outline-[#A1A1A1] mb-4">
                   <div className="mb-4">
                     <label className="block text-sm font-semibold mb-2">SDG</label>
-                    <select
-                      className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                    <Select
+                      options={sdgs}
+                      isMulti
                       name="sdg_id"
-                      value={formData.sdg_id}
-                      onChange={handleSdgChange}
-                    >
-                      <option value="">Pilih SDG</option>
-                      {sdgs.map((sdg, index) => (
-                        <option key={index} value={sdg.id}>{sdg.name}</option>
-                      ))}
-                    </select>
+                      className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      onChange={handleSdgSelect}
+                    />
                   </div>
                   <div className="mb-4">
                     <label className="block text-sm font-semibold mb-2">Indicator</label>
-                    <select
-                      className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                    <Select
+                      options={indicators}
+                      isMulti
                       name="indikator_id"
-                      value={formData.indikator_id}
-                      onChange={handleIndicatorChange}
-                    >
-                      <option value="">Pilih Indicator</option>
-                      {indicators.map((indicator, index) => (
-                        <option key={index} value={indicator.id}>{indicator.name}</option>
-                      ))}
-                    </select>
+                      className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      onChange={handleIndicatorSelect}
+                    />
                   </div>
                   <div className="mb-4">
                     <label className="block text-sm font-semibold mb-2">Metric</label>
-                    <select
-                      className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                    <Select
+                      options={metrics}
+                      isMulti
                       name="matrik_id"
-                      value={formData.matrik_id}
-                      onChange={handleMetricChange}
-                    >
-                      <option value="">Pilih Metric</option>
-                      {metrics.map((metric, index) => (
-                        <option key={index} value={metric.id}>{metric.name}</option>
-                      ))}
-                    </select>
+                      className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      onChange={handleMetricSelect}
+                    />
                   </div>
                 </div>
               </div>
