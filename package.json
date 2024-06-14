@@ -34,6 +34,7 @@
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.23.0",
+    "react-select": "^5.8.0",
     "recharts": "^2.12.7",
     "rsuite": "^5.62.0",
     "sass": "^1.76.0",

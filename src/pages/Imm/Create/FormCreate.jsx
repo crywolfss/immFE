@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Select from 'react-select';
 
 export const FormCreate = () => {
   const [formData, setFormData] = useState({
-    user_id: "", // Ensure this is set correctly based on your application context
-    tag_id: "", // Ensure this is set correctly based on your application context
+    user_id: "",
+    tag_id: [],
     judul: "",
     deskripsi: "",
     tujuan: "",
@@ -25,7 +26,6 @@ export const FormCreate = () => {
   });
 
   const [tags, setTags] = useState([]);
-  const [selectedTags, setSelectedTags] = useState([]);
   const [countries, setCountries] = useState([]);
   const [provinces, setProvinces] = useState([]);
   const [cities, setCities] = useState([]);
@@ -37,7 +37,11 @@ export const FormCreate = () => {
     const fetchTags = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/api/tag");
-        setTags(response.data);
+        const tagOptions = response.data.map(tag => ({
+          value: tag.id,
+          label: tag.nama
+        }));
+        setTags(tagOptions);
       } catch (error) {
         console.error("Error fetching tags:", error);
       }
@@ -79,8 +83,6 @@ export const FormCreate = () => {
             ...prevFormData,
             user_id: response.data[0].id
           }));
-          console.log(response.data);
-          console.log(response.data[0].nik);
           localStorage.setItem("id", response.data[0].id);
         } catch (error) {
           console.error('Error fetching user ID:', error);
@@ -157,12 +159,9 @@ export const FormCreate = () => {
     }
   };
 
-  const handleTagSelect = (e) => {
-    setFormData({ ...formData, tag_id: e.target.value });
-  };
-
-  const removeSelectedTag = (tagId) => {
-    setSelectedTags(selectedTags.filter(tag => tag !== tagId));
+  const handleTagSelect = (selectedOptions) => {
+    const selectedTagIds = selectedOptions.map(option => option.value);
+    setFormData({ ...formData, tag_id: selectedTagIds });
   };
 
   const handleSubmit = async (e) => {
@@ -177,8 +176,8 @@ export const FormCreate = () => {
     });
 
     // Append each tag as a separate form field
-    selectedTags.forEach((tag, index) => {
-      data.append(`tag_id[${index}]`, tag);  // Adjust to match backend expectation
+    formData.tag_id.forEach((tagId, index) => {
+      data.append(`tag_id[${index}]`, tagId);
     });
 
     // Logging FormData content
@@ -222,17 +221,13 @@ export const FormCreate = () => {
             <h3 className="font-bold pt-8 text-xl mb-5" style={{ fontSize: "32px" }}>Buat Projek Baru</h3>
             <p className="text-lg font-semibold mb-2" style={{ fontSize: "17px" }}>Pilih Tag atau Buat yang Baru</p>
             <div className="bg-white rounded-2xl p-3 w-full outline outline-[#A1A1A1] mb-4">
-              <select
-                className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              <Select
+                options={tags}
+                isMulti
                 name="tags"
-                value={formData.tag_id}
+                className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                 onChange={handleTagSelect}
-              >
-                <option value="" disabled>Pilih Tag</option>
-                {tags.map((tag, index) => (
-                  <option key={index} value={tag.id}>{tag.nama}</option>
-                ))}
-              </select>
+              />
             </div>
           </div>
           <div className="flex flex-col lg:flex-row">
