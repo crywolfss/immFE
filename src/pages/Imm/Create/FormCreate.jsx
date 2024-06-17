@@ -19,9 +19,9 @@ export const FormCreate = () => {
     dana: "",
     jenis_dana: "",
     dana_lain: "",
-    sdg_id: "",
-    indikator_id: "",
-    matrik_id: "",
+    sdg_id: [],
+    indikator_id: [],
+    matrik_id: [],
     targetPelanggan: "",
   });
 
@@ -67,7 +67,11 @@ export const FormCreate = () => {
     const fetchSdgs = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/api/get-sdg");
-        setSdgs(response.data);
+        const sdgOptions = response.data.map(sdg => ({
+          value: sdg.id,
+          label: sdg.name
+        }));
+        setSdgs(sdgOptions);
       } catch (error) {
         console.error("Error fetching SDGs:", error);
       }
@@ -134,6 +138,7 @@ export const FormCreate = () => {
     setFormData({ ...formData, kota_id: e.target.value });
   };
 
+<<<<<<< HEAD
   const handleSdgChange = async (e) => {
     const selectedSdg = e.target.value;
     setFormData({
@@ -148,12 +153,26 @@ export const FormCreate = () => {
         `http://127.0.0.1:8000/api/get-indicators/${selectedSdg}`
       );
       setIndicators(response.data);
+=======
+  const handleSdgSelect = async (selectedOptions) => {
+    const selectedSdgIds = selectedOptions.map(option => option.value);
+    setFormData({ ...formData, sdg_id: selectedSdgIds, indikator_id: [], matrik_id: [] });
+
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/get-indicators/${selectedSdgIds}`);
+      const indicatorOptions = response.data.map(indicator => ({
+        value: indicator.id,
+        label: indicator.name
+      }));
+      setIndicators(indicatorOptions);
+>>>>>>> 221f60ae07f418fe303d3ed378b1b94dad93de15
       setMetrics([]);
     } catch (error) {
       console.error("Error fetching indicators:", error);
     }
   };
 
+<<<<<<< HEAD
   const handleIndicatorChange = async (e) => {
     const selectedIndicator = e.target.value;
     setFormData({
@@ -167,13 +186,27 @@ export const FormCreate = () => {
         `http://127.0.0.1:8000/api/get-metrics/${selectedIndicator}`
       );
       setMetrics(response.data);
+=======
+  const handleIndicatorSelect = async (selectedOptions) => {
+    const selectedIndicatorIds = selectedOptions.map(option => option.value);
+    setFormData({ ...formData, indikator_id: selectedIndicatorIds, matrik_id: [] });
+
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/get-metrics/${selectedIndicatorIds}`);
+      const metricOptions = response.data.map(metric => ({
+        value: metric.id,
+        label: metric.name
+      }));
+      setMetrics(metricOptions);
+>>>>>>> 221f60ae07f418fe303d3ed378b1b94dad93de15
     } catch (error) {
       console.error("Error fetching metrics:", error);
     }
   };
 
-  const handleMetricChange = (e) => {
-    setFormData({ ...formData, matrik_id: e.target.value });
+  const handleMetricSelect = (selectedOptions) => {
+    const selectedMetricIds = selectedOptions.map(option => option.value);
+    setFormData({ ...formData, matrik_id: selectedMetricIds });
   };
 
   const handleChange = (e) => {
@@ -198,12 +231,13 @@ export const FormCreate = () => {
     console.log("Form Data:", formData);
 
     Object.keys(formData).forEach((key) => {
-      data.append(key, formData[key]);
-    });
-
-    // Append each tag as a separate form field
-    formData.tag_id.forEach((tagId, index) => {
-      data.append(`tag_id[${index}]`, tagId);
+      if (Array.isArray(formData[key])) {
+        formData[key].forEach((value, index) => {
+          data.append(`${key}[${index}]`, value);
+        });
+      } else {
+        data.append(key, formData[key]);
+      }
     });
 
     // Logging FormData content
@@ -512,6 +546,7 @@ export const FormCreate = () => {
                 </h4>
                 <div className="bg-white rounded-2xl p-3 outline outline-[#A1A1A1] mb-4">
                   <div className="mb-4">
+<<<<<<< HEAD
                     <label className="block text-sm font-semibold mb-2">
                       SDG
                     </label>
@@ -564,6 +599,36 @@ export const FormCreate = () => {
                         </option>
                       ))}
                     </select>
+=======
+                    <label className="block text-sm font-semibold mb-2">SDG</label>
+                    <Select
+                      options={sdgs}
+                      isMulti
+                      name="sdg_id"
+                      className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      onChange={handleSdgSelect}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-2">Indicator</label>
+                    <Select
+                      options={indicators}
+                      isMulti
+                      name="indikator_id"
+                      className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      onChange={handleIndicatorSelect}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-2">Metric</label>
+                    <Select
+                      options={metrics}
+                      isMulti
+                      name="matrik_id"
+                      className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                      onChange={handleMetricSelect}
+                    />
+>>>>>>> 221f60ae07f418fe303d3ed378b1b94dad93de15
                   </div>
                 </div>
               </div>
