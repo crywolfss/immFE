@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Select from 'react-select';
+import Select from "react-select";
 
 export const FormCreate = () => {
   const [formData, setFormData] = useState({
@@ -37,9 +37,9 @@ export const FormCreate = () => {
     const fetchTags = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/api/tag");
-        const tagOptions = response.data.map(tag => ({
+        const tagOptions = response.data.map((tag) => ({
           value: tag.id,
-          label: tag.nama
+          label: tag.nama,
         }));
         setTags(tagOptions);
       } catch (error) {
@@ -52,7 +52,9 @@ export const FormCreate = () => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/get-countries");
+        const response = await axios.get(
+          "http://127.0.0.1:8000/api/get-countries"
+        );
         setCountries(response.data);
       } catch (error) {
         console.error("Error fetching countries:", error);
@@ -75,17 +77,19 @@ export const FormCreate = () => {
 
   useEffect(() => {
     const fetchUserId = async () => {
-      const storedEmail = localStorage.getItem('email');
+      const storedEmail = localStorage.getItem("email");
       if (storedEmail) {
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/api/user/${storedEmail}`);
-          setFormData(prevFormData => ({
+          const response = await axios.get(
+            `http://127.0.0.1:8000/api/user/${storedEmail}`
+          );
+          setFormData((prevFormData) => ({
             ...prevFormData,
-            user_id: response.data[0].id
+            user_id: response.data[0].id,
           }));
           localStorage.setItem("id", response.data[0].id);
         } catch (error) {
-          console.error('Error fetching user ID:', error);
+          console.error("Error fetching user ID:", error);
         }
       }
     };
@@ -94,10 +98,17 @@ export const FormCreate = () => {
 
   const handleCountryChange = async (e) => {
     const selectedCountry = e.target.value;
-    setFormData({ ...formData, negara_id: selectedCountry, provinsi_id: "", kota_id: "" });
+    setFormData({
+      ...formData,
+      negara_id: selectedCountry,
+      provinsi_id: "",
+      kota_id: "",
+    });
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/get-regions/${selectedCountry}`);
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/get-regions/${selectedCountry}`
+      );
       setProvinces(response.data);
       setCities([]);
     } catch (error) {
@@ -110,7 +121,9 @@ export const FormCreate = () => {
     setFormData({ ...formData, provinsi_id: selectedProvince, kota_id: "" });
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/get-cities/${selectedProvince}`);
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/get-cities/${selectedProvince}`
+      );
       setCities(response.data);
     } catch (error) {
       console.error("Error fetching cities:", error);
@@ -123,10 +136,17 @@ export const FormCreate = () => {
 
   const handleSdgChange = async (e) => {
     const selectedSdg = e.target.value;
-    setFormData({ ...formData, sdg_id: selectedSdg, indikator_id: "", matrik_id: "" });
+    setFormData({
+      ...formData,
+      sdg_id: selectedSdg,
+      indikator_id: "",
+      matrik_id: "",
+    });
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/get-indicators/${selectedSdg}`);
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/get-indicators/${selectedSdg}`
+      );
       setIndicators(response.data);
       setMetrics([]);
     } catch (error) {
@@ -136,10 +156,16 @@ export const FormCreate = () => {
 
   const handleIndicatorChange = async (e) => {
     const selectedIndicator = e.target.value;
-    setFormData({ ...formData, indikator_id: selectedIndicator, matrik_id: "" });
+    setFormData({
+      ...formData,
+      indikator_id: selectedIndicator,
+      matrik_id: "",
+    });
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/get-metrics/${selectedIndicator}`);
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/get-metrics/${selectedIndicator}`
+      );
       setMetrics(response.data);
     } catch (error) {
       console.error("Error fetching metrics:", error);
@@ -160,17 +186,17 @@ export const FormCreate = () => {
   };
 
   const handleTagSelect = (selectedOptions) => {
-    const selectedTagIds = selectedOptions.map(option => option.value);
+    const selectedTagIds = selectedOptions.map((option) => option.value);
     setFormData({ ...formData, tag_id: selectedTagIds });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    
+
     // Logging the formData before appending to FormData object
     console.log("Form Data:", formData);
-    
+
     Object.keys(formData).forEach((key) => {
       data.append(key, formData[key]);
     });
@@ -182,7 +208,7 @@ export const FormCreate = () => {
 
     // Logging FormData content
     for (let pair of data.entries()) {
-      console.log(pair[0] + ', ' + pair[1]); 
+      console.log(pair[0] + ", " + pair[1]);
     }
 
     try {
@@ -218,10 +244,21 @@ export const FormCreate = () => {
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col">
           <div className="w-full">
-            <h3 className="font-bold pt-8 text-xl mb-5" style={{ fontSize: "32px" }}>Buat Projek Baru</h3>
-            <p className="text-lg font-semibold mb-2" style={{ fontSize: "17px" }}>Pilih Tag atau Buat yang Baru</p>
+            <h3
+              className="font-bold pt-8 text-xl mb-5"
+              style={{ fontSize: "32px" }}
+            >
+              Buat Projek Baru
+            </h3>
+            <p
+              className="text-lg font-semibold mb-2"
+              style={{ fontSize: "17px" }}
+            >
+              Pilih Tag atau Buat yang Baru
+            </p>
             <div className="bg-white rounded-2xl p-3 w-full outline outline-[#A1A1A1] mb-4">
               <Select
+                closeMenuOnSelect={false}
                 options={tags}
                 isMulti
                 name="tags"
@@ -233,9 +270,13 @@ export const FormCreate = () => {
           <div className="flex flex-col lg:flex-row">
             <div className="w-full lg:w-2/3 lg:pr-8">
               <div className="mb-2">
-                <h4 className="text-lg font-semibold mb-3">Tentang Proyek Anda</h4>
+                <h4 className="text-lg font-semibold mb-3">
+                  Tentang Proyek Anda
+                </h4>
                 <div className="mb-2">
-                  <label className="block text-sm font-semibold mb-2">Nama Projek</label>
+                  <label className="block text-sm font-semibold mb-2">
+                    Nama Projek
+                  </label>
                   <input
                     type="text"
                     className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
@@ -246,7 +287,9 @@ export const FormCreate = () => {
                   />
                 </div>
                 <div className="mb-2">
-                  <label className="block text-sm font-semibold">Deskripsi Projek</label>
+                  <label className="block text-sm font-semibold">
+                    Deskripsi Projek
+                  </label>
                   <textarea
                     className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                     rows="2"
@@ -256,7 +299,9 @@ export const FormCreate = () => {
                   />
                 </div>
                 <div className="mb-2">
-                  <label className="block text-sm font-semibold">Tujuan Projek</label>
+                  <label className="block text-sm font-semibold">
+                    Tujuan Projek
+                  </label>
                   <textarea
                     className="mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                     rows="3"
@@ -266,7 +311,9 @@ export const FormCreate = () => {
                   />
                 </div>
                 <div className="mb-2">
-                  <label className="block text-sm font-semibold mb-2">Target Pelanggan</label>
+                  <label className="block text-sm font-semibold mb-2">
+                    Target Pelanggan
+                  </label>
                   <div className="flex space-x-4">
                     <input
                       type="text"
@@ -279,7 +326,9 @@ export const FormCreate = () => {
                   </div>
                 </div>
                 <div className="mb-2">
-                  <label className="text-sm font-semibold">Tanggal Mulai Projek</label>
+                  <label className="text-sm font-semibold">
+                    Tanggal Mulai Projek
+                  </label>
                   <div className="flex space-x-4">
                     <input
                       type="date"
@@ -291,7 +340,9 @@ export const FormCreate = () => {
                   </div>
                 </div>
                 <div className="mb-2">
-                  <label className="text-sm font-semibold">Tanggal Berakhir Projek</label>
+                  <label className="text-sm font-semibold">
+                    Tanggal Berakhir Projek
+                  </label>
                   <div className="flex space-x-4">
                     <input
                       type="date"
@@ -306,8 +357,15 @@ export const FormCreate = () => {
               <div className="mb-2">
                 <h4 className="text-lg font-semibold mb-2">Import Data</h4>
                 <div className="bg-[#7198F9] p-8 rounded-md flex items-center justify-center flex-col">
-                  <img src="src/assets/icons/icon-upload.svg" alt="Upload icon" className="mb-2" />
-                  <p className="text-white text-center">Unggah berbagai informasi yang relevan untuk proyek Anda dengan mudah dan cepat</p>
+                  <img
+                    src="src/assets/icons/icon-upload.svg"
+                    alt="Upload icon"
+                    className="mb-2"
+                  />
+                  <p className="text-white text-center">
+                    Unggah berbagai informasi yang relevan untuk proyek Anda
+                    dengan mudah dan cepat
+                  </p>
                   <input
                     type="file"
                     name="data_path"
@@ -320,7 +378,9 @@ export const FormCreate = () => {
                 <h4 className="text-lg font-semibold mb-2">Alamat</h4>
                 <div className="bg-[#7198F9] p-6 rounded-md text-black flex flex-col">
                   <div className="mb-4">
-                    <label className="block text-sm font-semibold mb-2">Negara</label>
+                    <label className="block text-sm font-semibold mb-2">
+                      Negara
+                    </label>
                     <select
                       className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                       name="negara_id"
@@ -329,12 +389,16 @@ export const FormCreate = () => {
                     >
                       <option value="">Pilih Negara</option>
                       {countries.map((country, index) => (
-                        <option key={index} value={country.id}>{country.name}</option>
+                        <option key={index} value={country.id}>
+                          {country.name}
+                        </option>
                       ))}
                     </select>
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-semibold mb-2">Provinsi</label>
+                    <label className="block text-sm font-semibold mb-2">
+                      Provinsi
+                    </label>
                     <select
                       className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                       name="provinsi_id"
@@ -343,12 +407,16 @@ export const FormCreate = () => {
                     >
                       <option value="">Pilih Provinsi</option>
                       {provinces.map((province, index) => (
-                        <option key={index} value={province.id}>{province.name}</option>
+                        <option key={index} value={province.id}>
+                          {province.name}
+                        </option>
                       ))}
                     </select>
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-semibold mb-2">Kota</label>
+                    <label className="block text-sm font-semibold mb-2">
+                      Kota
+                    </label>
                     <select
                       className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                       name="kota_id"
@@ -357,7 +425,9 @@ export const FormCreate = () => {
                     >
                       <option value="">Pilih Kota</option>
                       {cities.map((city, index) => (
-                        <option key={index} value={city.id}>{city.name}</option>
+                        <option key={index} value={city.id}>
+                          {city.name}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -395,7 +465,9 @@ export const FormCreate = () => {
               <div className="mt-">
                 <h4 className="text-lg font-semibold mb-3">Pendanaan</h4>
                 <div className="mb-4">
-                  <label className="block text-sm font-semibold mb-4">Jumlah Dana</label>
+                  <label className="block text-sm font-semibold mb-4">
+                    Jumlah Dana
+                  </label>
                   <input
                     type="text"
                     className="mt-1 block w-full rounded-md border-black shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
@@ -406,7 +478,9 @@ export const FormCreate = () => {
                 </div>
               </div>
               <div className="mt-3">
-                <h4 className="text-lg font-semibold mb-3">Pendanaan Lainnya</h4>
+                <h4 className="text-lg font-semibold mb-3">
+                  Pendanaan Lainnya
+                </h4>
                 <div className="mb-4">
                   <label className="block text-sm mb-4">Jenis Dana</label>
                   <select
@@ -433,10 +507,14 @@ export const FormCreate = () => {
                 </div>
               </div>
               <div className="mb-8">
-                <h4 className="text-lg font-semibold mb-2">Kategori SDGs, Indicators dan Metrics</h4>
+                <h4 className="text-lg font-semibold mb-2">
+                  Kategori SDGs, Indicators dan Metrics
+                </h4>
                 <div className="bg-white rounded-2xl p-3 outline outline-[#A1A1A1] mb-4">
                   <div className="mb-4">
-                    <label className="block text-sm font-semibold mb-2">SDG</label>
+                    <label className="block text-sm font-semibold mb-2">
+                      SDG
+                    </label>
                     <select
                       className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                       name="sdg_id"
@@ -445,12 +523,16 @@ export const FormCreate = () => {
                     >
                       <option value="">Pilih SDG</option>
                       {sdgs.map((sdg, index) => (
-                        <option key={index} value={sdg.id}>{sdg.name}</option>
+                        <option key={index} value={sdg.id}>
+                          {sdg.name}
+                        </option>
                       ))}
                     </select>
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-semibold mb-2">Indicator</label>
+                    <label className="block text-sm font-semibold mb-2">
+                      Indicator
+                    </label>
                     <select
                       className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                       name="indikator_id"
@@ -459,12 +541,16 @@ export const FormCreate = () => {
                     >
                       <option value="">Pilih Indicator</option>
                       {indicators.map((indicator, index) => (
-                        <option key={index} value={indicator.id}>{indicator.name}</option>
+                        <option key={index} value={indicator.id}>
+                          {indicator.name}
+                        </option>
                       ))}
                     </select>
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-semibold mb-2">Metric</label>
+                    <label className="block text-sm font-semibold mb-2">
+                      Metric
+                    </label>
                     <select
                       className="mt-1 block w-full rounded-md border-[#808080] shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
                       name="matrik_id"
@@ -473,7 +559,9 @@ export const FormCreate = () => {
                     >
                       <option value="">Pilih Metric</option>
                       {metrics.map((metric, index) => (
-                        <option key={index} value={metric.id}>{metric.name}</option>
+                        <option key={index} value={metric.id}>
+                          {metric.name}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -489,7 +577,8 @@ export const FormCreate = () => {
                 <div className="flex justify-center mt-10">
                   <button
                     type="submit"
-                    className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">
+                    className="bg-[#2A64F6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl"
+                  >
                     Simpan dan Lanjutkan
                   </button>
                 </div>
